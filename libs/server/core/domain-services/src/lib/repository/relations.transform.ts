@@ -1,4 +1,4 @@
-import { IExactQuery, IQuery, PAGINATE_KEY } from "@involvemint/shared/domain";
+import { IExactQuery, IQuery, PAGINATE_KEY } from '@involvemint/shared/domain';
 
 export function createTypeormRelationsArray<T, Q extends IQuery<T>>(query: IExactQuery<T, Q>) {
   const arr: string[] = [];

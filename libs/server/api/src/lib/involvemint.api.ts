@@ -21,15 +21,11 @@ import { StorageController } from './storage/storage.controller';
 import { TransactionController } from './transaction/transaction.controller';
 import { UserController } from './user/user.controller';
 import { VoucherController } from './voucher/voucher.controller';
-import {  APIOperationErrorFilter } from './api-operation-error.filter';
+import { APIOperationErrorFilter } from './api-operation-error.filter';
 
 @Module({
-  providers:[
-    { provide: APP_FILTER, useClass:  APIOperationErrorFilter }
-  ],
-  imports: [
-    ServerCoreApplicationServicesModule,
-  ],
+  providers: [{ provide: APP_FILTER, useClass: APIOperationErrorFilter }],
+  imports: [ServerCoreApplicationServicesModule],
   controllers: [
     EnrollmentController,
     ChangeMakerController,
@@ -50,7 +46,7 @@ import {  APIOperationErrorFilter } from './api-operation-error.filter';
     StorageController,
     TransactionController,
     UserController,
-    VoucherController
-  ]
+    VoucherController,
+  ],
 })
 export class ServerAPIModule {}

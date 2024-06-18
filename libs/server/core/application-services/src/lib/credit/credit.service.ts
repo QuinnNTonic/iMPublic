@@ -5,9 +5,9 @@ import {
   Credit,
   GetCreditsForProfileDto,
   MintDto,
-  createQuery, 
-  IParser, 
-  IQuery
+  createQuery,
+  IParser,
+  IQuery,
 } from '@involvemint/shared/domain';
 import { isDecimal } from '@involvemint/shared/util';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';

@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  EpApplicationRestClient,
-  SpApplicationRestClient,
-} from '@involvemint/client/shared/data-access';
+import { EpApplicationRestClient, SpApplicationRestClient } from '@involvemint/client/shared/data-access';
 import { StatusService } from '@involvemint/client/shared/util';
 import { EpApplicationQuery, SpApplicationQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';

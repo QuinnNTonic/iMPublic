@@ -9,7 +9,7 @@ export class EmailService {
 
   shouldNotSendNotification = environment.environment === 'local';
 
-  constructor(@Inject(FRONTEND_ROUTES_TOKEN) private readonly route: FrontendRoutes) { }
+  constructor(@Inject(FRONTEND_ROUTES_TOKEN) private readonly route: FrontendRoutes) {}
 
   sendInfoEmail({
     user,

@@ -85,7 +85,7 @@
             <div class="impact-row">
               <div>
                 <div class="main-text">
-                  {{ state.profile.view.earnedCredits / 100 | currency: '':'' }}
+                  {{ state.profile.view.earnedCredits / 100 | currency : '' : '' }}
                   <ion-icon [style.margin-bottom]="'-2px'" src="/assets/icons/cc.svg"></ion-icon>
                 </div>
                 <div>
@@ -96,7 +96,7 @@
               </div>
               <div>
                 <div class="main-text">
-                  {{ state.profile.view.spentCredits / 100 | currency: '':'' }}
+                  {{ state.profile.view.spentCredits / 100 | currency : '' : '' }}
                   <ion-icon [style.margin-bottom]="'-2px'" src="/assets/icons/cc.svg"></ion-icon>
                 </div>
                 <div>
@@ -109,7 +109,7 @@
             <div class="impact-row">
               <div>
                 <div class="main-text">
-                  {{ state.profile.view.secondsCompleted / 3600 | number: '1.2-2' }}
+                  {{ state.profile.view.secondsCompleted / 3600 | number : '1.2-2' }}
                 </div>
                 <div>
                   Hours
@@ -170,7 +170,7 @@
                 </div>
                 <div class="timeline-detail-item">
                   <ion-icon name="calendar"></ion-icon>
-                  <span *ngIf="poi.dateSubmitted">{{ poi.dateSubmitted | date: 'longDate' }}</span>
+                  <span *ngIf="poi.dateSubmitted">{{ poi.dateSubmitted | date : 'longDate' }}</span>
                   <div *ngIf="!poi.dateSubmitted">No submission date.</div>
                 </div>
                 <div class="timeline-detail-item">

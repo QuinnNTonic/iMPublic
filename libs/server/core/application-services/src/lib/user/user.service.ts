@@ -15,7 +15,7 @@ import {
   SnoopDto,
   User,
   IQuery,
-  parseQuery
+  parseQuery,
 } from '@involvemint/shared/domain';
 import { HttpException, HttpService, HttpStatus, Injectable } from '@nestjs/common';
 import { addMonths } from 'date-fns';
@@ -33,7 +33,7 @@ export class UserService {
     private readonly email: EmailService,
     private readonly httpService: HttpService,
     private readonly epRepo: ExchangePartnerRepository
-  ) { }
+  ) {}
 
   async verifyUserEmail(email: string): Promise<boolean> {
     const user = await this.userRepo.findOne(email, { id: true });
@@ -100,7 +100,7 @@ export class UserService {
     if (!compare) {
       throw new HttpException(`Incorrect password.`, HttpStatus.UNAUTHORIZED);
     }
-    if (!user.active && (environment.environment !== 'local')) {
+    if (!user.active && environment.environment !== 'local') {
       throw new HttpException(`User ${user.id} has not been verified.`, HttpStatus.UNAUTHORIZED);
     }
 

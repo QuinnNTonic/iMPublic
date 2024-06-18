@@ -12,8 +12,7 @@ import {
   QUERY_KEY,
   WithdrawSpApplicationDto,
 } from '@involvemint/shared/domain';
-import { Controller, Post, Body,
-  Headers } from '@nestjs/common';
+import { Controller, Post, Body, Headers } from '@nestjs/common';
 import { QueryValidationPipe, ValidationPipe } from '../pipes';
 
 @Controller(InvolvemintRoutes.spApplication)
@@ -22,7 +21,7 @@ export class SpApplicationController {
 
   @Post('submit')
   async submit(
-    @Body(QUERY_KEY, new QueryValidationPipe(UserQuery.spApplications)) query: IQuery<SpApplication>, 
+    @Body(QUERY_KEY, new QueryValidationPipe(UserQuery.spApplications)) query: IQuery<SpApplication>,
     @Body(DTO_KEY, new ValidationPipe()) dto: SubmitSpApplicationDto,
     @Headers(TOKEN_KEY) token: string
   ) {
@@ -31,8 +30,8 @@ export class SpApplicationController {
 
   @Post('withdraw')
   async withdraw(
-    @Body(QUERY_KEY, new QueryValidationPipe({ deletedId: true })) query: IQuery<{ deletedId: string }>, 
-    @Body(DTO_KEY, new ValidationPipe()) dto: WithdrawSpApplicationDto, 
+    @Body(QUERY_KEY, new QueryValidationPipe({ deletedId: true })) query: IQuery<{ deletedId: string }>,
+    @Body(DTO_KEY, new ValidationPipe()) dto: WithdrawSpApplicationDto,
     @Headers(TOKEN_KEY) token: string
   ) {
     return this.spApplicationService.withdraw(query, token, dto);
@@ -40,8 +39,8 @@ export class SpApplicationController {
 
   @Post('process')
   async process(
-    @Body(QUERY_KEY, new QueryValidationPipe({ deletedId: true })) query: IQuery<{ deletedId: string }>, 
-    @Body(DTO_KEY, new ValidationPipe()) dto: ProcessSpApplicationDto, 
+    @Body(QUERY_KEY, new QueryValidationPipe({ deletedId: true })) query: IQuery<{ deletedId: string }>,
+    @Body(DTO_KEY, new ValidationPipe()) dto: ProcessSpApplicationDto,
     @Headers(TOKEN_KEY) token: string
   ) {
     return this.spApplicationService.process(query, dto, token);
@@ -49,7 +48,7 @@ export class SpApplicationController {
 
   @Post('findAll')
   async findAll(
-    @Body(QUERY_KEY, new QueryValidationPipe(SpApplicationQuery)) query: IQuery<SpApplication>, 
+    @Body(QUERY_KEY, new QueryValidationPipe(SpApplicationQuery)) query: IQuery<SpApplication>,
     @Headers(TOKEN_KEY) token: string
   ) {
     return this.spApplicationService.findAll(query, token);

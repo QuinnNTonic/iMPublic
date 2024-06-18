@@ -37,7 +37,7 @@ export class ImImagesViewerModalComponent implements ImagesViewerComponentInputs
 
   onMouseWheel(event: WheelEvent): void {
     event.preventDefault();
-    const swiper: Swiper = ((this.slides as unknown) as { el: { swiper: Swiper } }).el.swiper;
+    const swiper: Swiper = (this.slides as unknown as { el: { swiper: Swiper } }).el.swiper;
     const zoom = swiper.zoom;
     if (zoom) {
       if (event.deltaY < 0) {

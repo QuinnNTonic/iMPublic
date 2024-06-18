@@ -12,7 +12,7 @@ import {
   UpdateRequestDto,
   UploadRequestImageDto,
   IQuery,
-  parseQuery
+  parseQuery,
 } from '@involvemint/shared/domain';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import * as uuid from 'uuid';

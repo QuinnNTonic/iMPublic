@@ -23,7 +23,8 @@ interface State {
 })
 export class ImProfileSelectModalComponent
   extends StatefulComponent<State>
-  implements OnInit, ImProfileSelectModalInputs {
+  implements OnInit, ImProfileSelectModalInputs
+{
   @Input() title = 'Select Profile';
   @Input() header?: string;
 

@@ -1,10 +1,6 @@
 import { HttpEventType } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  EnrollmentRestClient,
-  ProjectRestClient,
-  UserFacade,
-} from '@involvemint/client/shared/data-access';
+import { EnrollmentRestClient, ProjectRestClient, UserFacade } from '@involvemint/client/shared/data-access';
 import { RouteService } from '@involvemint/client/shared/routes';
 import { StatusService } from '@involvemint/client/shared/util';
 import { ProjectSpQuery } from '@involvemint/shared/domain';

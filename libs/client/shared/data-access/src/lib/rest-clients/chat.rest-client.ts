@@ -6,15 +6,13 @@ import { DTO_KEY, InvolvemintRoutes, SendChatMessageDto, environment } from '@in
 export class ChatRestClient {
   apiUrl = `${environment.apiUrl}/${InvolvemintRoutes.chat}`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  sendMessage(dto: SendChatMessageDto)
-  {
+  sendMessage(dto: SendChatMessageDto) {
     const body = {
-      [DTO_KEY]: dto
+      [DTO_KEY]: dto,
     };
 
-    return this.http
-          .post(`${this.apiUrl}/sendMessage`, body);
+    return this.http.post(`${this.apiUrl}/sendMessage`, body);
   }
 }

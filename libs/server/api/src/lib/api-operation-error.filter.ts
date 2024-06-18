@@ -2,7 +2,7 @@ import { APIOperationError } from '@involvemint/shared/domain';
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus, Logger } from '@nestjs/common';
 
 @Catch()
-export class  APIOperationErrorFilter implements ExceptionFilter {
+export class APIOperationErrorFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost): void {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();

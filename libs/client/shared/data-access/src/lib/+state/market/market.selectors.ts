@@ -7,18 +7,12 @@ import {
   requestsMarketAdapter,
 } from './market.reducer';
 
-const {
-  selectAll: selectAllEps,
-  selectEntities: selectEntitiesEp,
-} = exchangePartnersMarketAdapter.getSelectors();
-const {
-  selectAll: selectAllOffers,
-  selectEntities: selectEntitiesOffers,
-} = offersMarketAdapter.getSelectors();
-const {
-  selectAll: selectAllRequests,
-  selectEntities: selectEntitiesRequests,
-} = requestsMarketAdapter.getSelectors();
+const { selectAll: selectAllEps, selectEntities: selectEntitiesEp } =
+  exchangePartnersMarketAdapter.getSelectors();
+const { selectAll: selectAllOffers, selectEntities: selectEntitiesOffers } =
+  offersMarketAdapter.getSelectors();
+const { selectAll: selectAllRequests, selectEntities: selectEntitiesRequests } =
+  requestsMarketAdapter.getSelectors();
 
 const getMarketState = createFeatureSelector<MarketState>(MARKET_KEY);
 

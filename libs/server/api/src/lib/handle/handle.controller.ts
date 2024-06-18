@@ -24,7 +24,7 @@ export class HandleController {
 
   @Post('verifyHandle')
   async verifyHandle(
-    @Body(QUERY_KEY, new QueryValidationPipe(VerifyHandleQuery)) query: IQuery<{ isUnique: boolean }>, 
+    @Body(QUERY_KEY, new QueryValidationPipe(VerifyHandleQuery)) query: IQuery<{ isUnique: boolean }>,
     @Body(DTO_KEY, new ValidationPipe()) { handle }: VerifyHandleDto
   ) {
     const isUnique = await this.handle.verifyHandle(handle);
@@ -33,7 +33,7 @@ export class HandleController {
 
   @Post('searchHandles')
   async searchHandles(
-    @Body(QUERY_KEY, new QueryValidationPipe(HandleChatQuery)) query: IQuery<Handle[]>, 
+    @Body(QUERY_KEY, new QueryValidationPipe(HandleChatQuery)) query: IQuery<Handle[]>,
     @Body(DTO_KEY, new ValidationPipe()) dto: SearchHandleDto
   ) {
     return this.handle.searchHandles(query, dto);

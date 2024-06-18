@@ -28,7 +28,27 @@ import { VouchersEffects } from './+state/vouchers/vouchers.effects';
 import { VoucherReducer, VOUCHERS_KEY } from './+state/vouchers/vouchers.reducer';
 import { AuthInterceptor } from './auth.interceptor';
 import { ImProfileSelectModalModule } from './modals/im-profile-select-modal/im-profile-select-modal.module';
-import { ChangeMakerRestClient, ChatRestClient, CreditRestClient, EnrollmentRestClient, EpApplicationRestClient, ExchangeAdminRestClient, ExchangePartnerRestClient, HandleRestClient, OfferRestClient, PassportDocumentRestClient, PoiRestClient, ProjectRestClient, RequestRestClient, ServeAdminRestClient, ServePartnerRestClient, SpApplicationRestClient, TransactionRestClient, UserRestClient, VoucherRestClient } from './rest-clients';
+import {
+  ChangeMakerRestClient,
+  ChatRestClient,
+  CreditRestClient,
+  EnrollmentRestClient,
+  EpApplicationRestClient,
+  ExchangeAdminRestClient,
+  ExchangePartnerRestClient,
+  HandleRestClient,
+  OfferRestClient,
+  PassportDocumentRestClient,
+  PoiRestClient,
+  ProjectRestClient,
+  RequestRestClient,
+  ServeAdminRestClient,
+  ServePartnerRestClient,
+  SpApplicationRestClient,
+  TransactionRestClient,
+  UserRestClient,
+  VoucherRestClient,
+} from './rest-clients';
 import { StorageRestClient } from './rest-clients/storage.rest-client';
 
 @NgModule({
@@ -87,8 +107,7 @@ import { StorageRestClient } from './rest-clients/storage.rest-client';
     StorageRestClient,
     TransactionRestClient,
     UserRestClient,
-    VoucherRestClient
-  ]
-  
+    VoucherRestClient,
+  ],
 })
 export class ClientSharedDataAccessModule {}

@@ -21,67 +21,46 @@ const initialState: EnrollmentsState = {
 
 export const EnrollmentsReducer = createReducer(
   initialState,
-  on(
-    EnrollmentActions.refreshEnrollments,
-    (state): EnrollmentsState => {
-      return {
-        ...state,
-        loaded: false,
-      };
-    }
-  ),
-  on(
-    EnrollmentActions.loadEnrollmentsSuccess,
-    (state, { enrollments }): EnrollmentsState => {
-      return {
-        enrollments: enrollmentsAdapter.upsertMany(enrollments, state.enrollments),
-        loaded: true,
-      };
-    }
-  ),
-  on(
-    EnrollmentActions.startApplicationSuccess,
-    (state, { enrollment }): EnrollmentsState => {
-      return {
-        ...state,
-        enrollments: enrollmentsAdapter.upsertOne(enrollment, state.enrollments),
-      };
-    }
-  ),
-  on(
-    EnrollmentActions.withdrawEnrollmentSuccess,
-    (state, { deletedId }): EnrollmentsState => {
-      return {
-        ...state,
-        enrollments: enrollmentsAdapter.removeOne(deletedId, state.enrollments),
-      };
-    }
-  ),
-  on(
-    EnrollmentActions.linkPassportDocumentSuccess,
-    (state, { enrollment }): EnrollmentsState => {
-      return {
-        ...state,
-        enrollments: enrollmentsAdapter.upsertOne(enrollment, state.enrollments),
-      };
-    }
-  ),
-  on(
-    EnrollmentActions.submitApplicationSuccess,
-    (state, { enrollment }): EnrollmentsState => {
-      return {
-        ...state,
-        enrollments: enrollmentsAdapter.upsertOne(enrollment, state.enrollments),
-      };
-    }
-  ),
-  on(
-    EnrollmentActions.acceptWaiverSuccess,
-    (state, { enrollment }): EnrollmentsState => {
-      return {
-        ...state,
-        enrollments: enrollmentsAdapter.upsertOne(enrollment, state.enrollments),
-      };
-    }
-  )
+  on(EnrollmentActions.refreshEnrollments, (state): EnrollmentsState => {
+    return {
+      ...state,
+      loaded: false,
+    };
+  }),
+  on(EnrollmentActions.loadEnrollmentsSuccess, (state, { enrollments }): EnrollmentsState => {
+    return {
+      enrollments: enrollmentsAdapter.upsertMany(enrollments, state.enrollments),
+      loaded: true,
+    };
+  }),
+  on(EnrollmentActions.startApplicationSuccess, (state, { enrollment }): EnrollmentsState => {
+    return {
+      ...state,
+      enrollments: enrollmentsAdapter.upsertOne(enrollment, state.enrollments),
+    };
+  }),
+  on(EnrollmentActions.withdrawEnrollmentSuccess, (state, { deletedId }): EnrollmentsState => {
+    return {
+      ...state,
+      enrollments: enrollmentsAdapter.removeOne(deletedId, state.enrollments),
+    };
+  }),
+  on(EnrollmentActions.linkPassportDocumentSuccess, (state, { enrollment }): EnrollmentsState => {
+    return {
+      ...state,
+      enrollments: enrollmentsAdapter.upsertOne(enrollment, state.enrollments),
+    };
+  }),
+  on(EnrollmentActions.submitApplicationSuccess, (state, { enrollment }): EnrollmentsState => {
+    return {
+      ...state,
+      enrollments: enrollmentsAdapter.upsertOne(enrollment, state.enrollments),
+    };
+  }),
+  on(EnrollmentActions.acceptWaiverSuccess, (state, { enrollment }): EnrollmentsState => {
+    return {
+      ...state,
+      enrollments: enrollmentsAdapter.upsertOne(enrollment, state.enrollments),
+    };
+  })
 );

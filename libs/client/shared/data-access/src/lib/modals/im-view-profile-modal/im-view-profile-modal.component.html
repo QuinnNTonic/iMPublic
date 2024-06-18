@@ -61,7 +61,7 @@
               <span>@{{ handle }}</span>
               <ion-icon class="mail-btn" name="mail"></ion-icon>
             </div>
-            <div [style.opacity]="0.7">Member since {{ cm!.dateCreated | date: 'MMMM y' }}</div>
+            <div [style.opacity]="0.7">Member since {{ cm!.dateCreated | date : 'MMMM y' }}</div>
           </div>
         </div>
       </ion-toolbar>
@@ -101,7 +101,7 @@
             <div class="impact-row">
               <div>
                 <div class="main-text">
-                  {{ cm.view.earnedCredits / 100 | currency: '':'' }}
+                  {{ cm.view.earnedCredits / 100 | currency : '' : '' }}
                   <ion-icon [style.margin-bottom]="'-2px'" src="/assets/icons/cc.svg"></ion-icon>
                 </div>
                 <div>
@@ -112,7 +112,7 @@
               </div>
               <div>
                 <div class="main-text">
-                  {{ cm.view.spentCredits / 100 | currency: '':'' }}
+                  {{ cm.view.spentCredits / 100 | currency : '' : '' }}
                   <ion-icon [style.margin-bottom]="'-2px'" src="/assets/icons/cc.svg"></ion-icon>
                 </div>
                 <div>
@@ -125,7 +125,7 @@
             <div class="impact-row">
               <div>
                 <div class="main-text">
-                  {{ cm.view.secondsCompleted / 3600 | number: '1.2-2' }}
+                  {{ cm.view.secondsCompleted / 3600 | number : '1.2-2' }}
                 </div>
                 <div>
                   Hours
@@ -180,7 +180,7 @@
                 </div>
                 <div class="timeline-detail-item">
                   <ion-icon name="calendar"></ion-icon>
-                  <span *ngIf="poi.dateSubmitted">{{ poi.dateSubmitted | date: 'longDate' }}</span>
+                  <span *ngIf="poi.dateSubmitted">{{ poi.dateSubmitted | date : 'longDate' }}</span>
                   <div *ngIf="!poi.dateSubmitted">No submission date.</div>
                 </div>
                 <div class="timeline-detail-item">
@@ -294,15 +294,15 @@
           </im-block>
           <im-block [join]="true" icon="person-add">
             <div header class="im-primary-text">Member Since</div>
-            <div body>{{ ep!.dateCreated | date: 'MMMM y' }}</div>
+            <div body>{{ ep!.dateCreated | date : 'MMMM y' }}</div>
           </im-block>
           <im-block [join]="true" icon="/assets/icons/cc-menu.svg">
             <div header class="im-primary-text">Remaining Monthly Budget</div>
-            <div body>{{ (ep!.budget - ep!.view.receivedThisMonth) / 100 | currency: '':'' }}</div>
+            <div body>{{ (ep!.budget - ep!.view.receivedThisMonth) / 100 | currency : '' : '' }}</div>
           </im-block>
           <im-block [join]="true" icon="compass" *ngIf="state.distance as distance">
             <div header class="im-primary-text">Distance</div>
-            <div body>{{ distance | number: '1.0-1' }} miles away</div>
+            <div body>{{ distance | number : '1.0-1' }} miles away</div>
           </im-block>
           <im-block [join]="true" icon="location" *ngIf="state.address as address">
             <div header class="im-primary-text">Location</div>
@@ -336,11 +336,11 @@
           </im-block>
           <im-block [join]="true" icon="person-add">
             <div header class="im-primary-text">Member Since</div>
-            <div body>{{ sp!.dateCreated | date: 'MMMM y' }}</div>
+            <div body>{{ sp!.dateCreated | date : 'MMMM y' }}</div>
           </im-block>
           <im-block [join]="true" icon="compass" *ngIf="state.distance as distance">
             <div header class="im-primary-text">Distance</div>
-            <div body>{{ distance | number: '1.0-1' }} miles away</div>
+            <div body>{{ distance | number : '1.0-1' }} miles away</div>
           </im-block>
           <im-block [join]="true" icon="location" *ngIf="state.address as address">
             <div header class="im-primary-text">Location</div>

@@ -1,5 +1,9 @@
 import { ProjectFeedStoreModel } from '@involvemint/client/shared/data-access';
-import { LinkPassportDocumentDto, APIOperationError, SubmitEnrollmentApplicationDto } from '@involvemint/shared/domain';
+import {
+  LinkPassportDocumentDto,
+  APIOperationError,
+  SubmitEnrollmentApplicationDto,
+} from '@involvemint/shared/domain';
 import { createAction, props } from '@ngrx/store';
 import { EnrollmentStoreModel } from './enrollments.reducer';
 

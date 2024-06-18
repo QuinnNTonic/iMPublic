@@ -1,6 +1,12 @@
-
 import { ChangeMakerRepository } from '@involvemint/server/core/domain-services';
-import { ChangeMaker, DTO_KEY, EditCmProfileDto, QUERY_KEY, TOKEN_KEY, User } from '@involvemint/shared/domain';
+import {
+  ChangeMaker,
+  DTO_KEY,
+  EditCmProfileDto,
+  QUERY_KEY,
+  TOKEN_KEY,
+  User,
+} from '@involvemint/shared/domain';
 import { HttpStatus } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import supertest from 'supertest';
@@ -47,20 +53,20 @@ describe('ChangeMaker Integration Tests', () => {
       });
     token = signUpResult.body[TOKEN_KEY];
     const profileCreationResult = await supertest(app.getHttpServer())
-    .post('/changeMaker/createProfile')
-    .set('token', token)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/json')
-    .send({
-      [QUERY_KEY]: cmQuery,
-      [DTO_KEY]: {
-        handle: 'bobby',
-        firstName: 'fn',
-        lastName: 'ln',
-        phone: '(555) 555-5555',
-      }
-    });
-    
+      .post('/changeMaker/createProfile')
+      .set('token', token)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .send({
+        [QUERY_KEY]: cmQuery,
+        [DTO_KEY]: {
+          handle: 'bobby',
+          firstName: 'fn',
+          lastName: 'ln',
+          phone: '(555) 555-5555',
+        },
+      });
+
     cmProfile = profileCreationResult.body as IParser<ChangeMaker, typeof cmQuery>;
     expect(profileCreationResult.statusCode).toBe(HttpStatus.CREATED);
   });
@@ -73,36 +79,32 @@ describe('ChangeMaker Integration Tests', () => {
         .post('/user/getUserData')
         .set(TOKEN_KEY, token)
         .send({
-          [QUERY_KEY]: userQuery
+          [QUERY_KEY]: userQuery,
         });
-      
+
       const cmEntity = await cmRepo.findOneOrFail(cmProfile.id, cmQuery);
       expect(getUserData.body.changeMaker).toMatchObject(cmEntity);
-      
     });
 
     it('should verify handle uniqueness', async () => {
-
       const profileCreationResult = await supertest(app.getHttpServer())
-      .post('/changeMaker/createProfile')
-      .set('token', token)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({
-        [QUERY_KEY]: cmQuery,
-        [DTO_KEY]: {
-          firstName: 'Bobby',
-          lastName: 'Smith',
-          handle: 'bobby',
-          phone: '(412) 232-2953',
-        }
-      });
-      
-      if(profileCreationResult.error !== false)
-      {
+        .post('/changeMaker/createProfile')
+        .set('token', token)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: cmQuery,
+          [DTO_KEY]: {
+            firstName: 'Bobby',
+            lastName: 'Smith',
+            handle: 'bobby',
+            phone: '(412) 232-2953',
+          },
+        });
+
+      if (profileCreationResult.error !== false) {
         expect(JSON.parse(profileCreationResult.error.text).message).toBe(`Handle @bobby already exists.`);
       }
-
     });
   });
 
@@ -111,24 +113,24 @@ describe('ChangeMaker Integration Tests', () => {
       const firstName = 'Jessie';
 
       const editProfileArgument: EditCmProfileDto = {
-        firstName: 'Jessie'
-      }
+        firstName: 'Jessie',
+      };
       await supertest(app.getHttpServer())
-      .post('/changeMaker/editProfile')
-      .set('token', token)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({
-        [QUERY_KEY]: cmQuery,
-        [DTO_KEY]: editProfileArgument
-      });
+        .post('/changeMaker/editProfile')
+        .set('token', token)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: cmQuery,
+          [DTO_KEY]: editProfileArgument,
+        });
 
       const getUserDataResponse = await supertest(app.getHttpServer())
-      .post('/user/getUserData')
-      .set(TOKEN_KEY, token)
-      .send({
-        [QUERY_KEY]: userQuery
-      });
+        .post('/user/getUserData')
+        .set(TOKEN_KEY, token)
+        .send({
+          [QUERY_KEY]: userQuery,
+        });
 
       expect(getUserDataResponse.body.changeMaker?.firstName).toBe(firstName);
     });

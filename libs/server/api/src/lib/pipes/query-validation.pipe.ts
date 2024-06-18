@@ -2,7 +2,6 @@
 import { Injectable, PipeTransform, UnauthorizedException } from '@nestjs/common';
 import { IQueryModel, PAGINATE_KEY } from '@involvemint/shared/domain';
 
-
 @Injectable()
 export class QueryValidationPipe implements PipeTransform<unknown> {
   query: IQueryModel;
@@ -17,7 +16,7 @@ export class QueryValidationPipe implements PipeTransform<unknown> {
     } catch (e) {
       //Ignore error since the value could be a JSON Object already instead
     }
-    
+
     const recurse = (val: IQueryModel, query: IQueryModel) => {
       for (const k of Object.keys(val)) {
         if (k === PAGINATE_KEY) {

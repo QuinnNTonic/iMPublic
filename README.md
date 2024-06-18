@@ -99,18 +99,20 @@ export const environment: Env = {
     saltSeparator: 'Bw==',
     signerKey: 'de/PQ/Gy53mgslvUgDUKDCgHJPArYqbFnGILLQZNe5My/CvqIThVL/CsndU8oudZ9lc4B7PT8w3sAar2/luQxA==',
   },
-  defaultLocalAddress: [{
-    streetNumber: '5000',
-    streetName: 'Forbes Ave',
-    formattedAddress: '5000 Forbes Ave, Pittsburgh, PA 15213',
-    city: 'Pittsburgh',
-    administrativeLevels: {
-      level1short: 'PA'
+  defaultLocalAddress: [
+    {
+      streetNumber: '5000',
+      streetName: 'Forbes Ave',
+      formattedAddress: '5000 Forbes Ave, Pittsburgh, PA 15213',
+      city: 'Pittsburgh',
+      administrativeLevels: {
+        level1short: 'PA',
+      },
+      zipcode: '15213',
+      latitude: 40.444229,
+      longitude: -79.943367,
     },
-    zipcode: '15213',
-    latitude: 40.444229,
-    longitude: -79.943367
-  }]
+  ],
 };
 ```
 
@@ -120,26 +122,26 @@ Under the key "typeOrmConfig", please change the password field to "postgres". U
 
 Run `docker compose up` in the root directory, which will spin up a PostgreSQL database on port 5433, a PgAdmin UI on port 8889, and a firestore emulator available at http://127.0.0.1:4000.
 
-If you are prompted for the pasword (below screenshot) when opening PgAdmin at http://localhost:8889 enter `postgres`. 
+If you are prompted for the pasword (below screenshot) when opening PgAdmin at http://localhost:8889 enter `postgres`.
 ![postgres_db_password_required](/assets/postgres_db_password_required.png)
-
 
 ### Starting the Apps
 
-- Open a terminal and run `npm i` from root directory to install all the required packages. 
-- Run `export FIREBASE_STORAGE_EMULATOR_HOST=localhost:9199`. 
-- Run `export FIRESTORE_EMULATOR_HOST='localhost:8080'`. 
+- Open a terminal and run `npm i` from root directory to install all the required packages.
+- Run `export FIREBASE_STORAGE_EMULATOR_HOST=localhost:9199`.
+- Run `export FIRESTORE_EMULATOR_HOST='localhost:8080'`.
 - Run `npm run start:client:local` which will start the client app.
 - Leave that terminal open and running and open a new terminal
-- In the new terminal: Run `export FIREBASE_STORAGE_EMULATOR_HOST=localhost:9199`. 
-- In the new terminal: Run `export FIRESTORE_EMULATOR_HOST='localhost:8080'`. 
+- In the new terminal: Run `export FIREBASE_STORAGE_EMULATOR_HOST=localhost:9199`.
+- In the new terminal: Run `export FIRESTORE_EMULATOR_HOST='localhost:8080'`.
 - Then Run `npm run start:server:local` which will start the server app.
 
 Once running, the client can be accessed via `http://localhost:4202` and the api/server will be running on `http://127.0.0.1:3335`
 
-
 ### Local Super Admin Privliges
+
 You can login to the local super admin using the following
+
 ```
 Username: admin@admin.com
 Password: IM-LocalSuperAdmin1

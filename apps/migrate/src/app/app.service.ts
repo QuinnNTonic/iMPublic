@@ -106,14 +106,11 @@ export class AppService {
 
         let address;
 
-        if(environment.environment === 'local')
-        {
+        if (environment.environment === 'local') {
           address = getDefaultAddress();
           address.address1 = '';
           address.zip = '';
-        }
-        else
-        {
+        } else {
           address = cm.city &&
             cm.state && {
               id: uuid.v4(),
@@ -344,13 +341,10 @@ export class AppService {
         .map((p): IUpsertEntity<Project> => {
           let address;
 
-          if(environment.environment === 'local')
-          {
+          if (environment.environment === 'local') {
             address = getDefaultAddress();
             address.zip = '';
-          }
-          else
-          {
+          } else {
             address = {
               id: uuid.v4(),
               city: p.city,
@@ -750,13 +744,10 @@ export class AppService {
         CmOffers.map(async (e): Promise<IUpsertEntity<Offer>> => {
           let address;
 
-          if(environment.environment === 'local')
-          {
+          if (environment.environment === 'local') {
             address = getDefaultAddress();
             address.zip = '';
-          }
-          else
-          {
+          } else {
             address = e.address && {
               id: uuid.v4(),
               address1: e.address,
@@ -894,12 +885,9 @@ export class AppService {
     }
     let res: geocoder.Entry[];
 
-    if(environment.environment === 'local')
-    {
+    if (environment.environment === 'local') {
       res = environment.defaultLocalAddress;
-    }
-    else
-    {
+    } else {
       const geo = geocoder.default({ provider: 'google', apiKey: environment.gcpApiKey });
       res = await geo.geocode(address);
     }

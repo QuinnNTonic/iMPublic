@@ -21,15 +21,12 @@ const initialState: TransactionsState = {
 
 export const TransactionsReducer = createReducer(
   initialState,
-  on(
-    TransactionsActions.refreshTransactionsForProfile,
-    (state, { profile }): TransactionsState => {
-      return {
-        ...state,
-        profileLoaded: state.profileLoaded.filter((p) => p !== profile.id),
-      };
-    }
-  ),
+  on(TransactionsActions.refreshTransactionsForProfile, (state, { profile }): TransactionsState => {
+    return {
+      ...state,
+      profileLoaded: state.profileLoaded.filter((p) => p !== profile.id),
+    };
+  }),
   on(
     TransactionsActions.loadTransactionsForProfileSuccess,
     (state, { transactions, profileId }): TransactionsState => {
@@ -40,13 +37,10 @@ export const TransactionsReducer = createReducer(
       };
     }
   ),
-  on(
-    TransactionsActions.transactionSuccess,
-    (state, { transaction }): TransactionsState => {
-      return {
-        ...state,
-        transactions: transactionsAdapter.upsertOne(transaction, state.transactions),
-      };
-    }
-  )
+  on(TransactionsActions.transactionSuccess, (state, { transaction }): TransactionsState => {
+    return {
+      ...state,
+      transactions: transactionsAdapter.upsertOne(transaction, state.transactions),
+    };
+  })
 );

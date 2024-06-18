@@ -18,8 +18,7 @@ import {
   QUERY_KEY,
   FILES_KEY,
 } from '@involvemint/shared/domain';
-import { Controller, Post, Body, UploadedFiles, UseInterceptors,
-  Headers } from '@nestjs/common';
+import { Controller, Post, Body, UploadedFiles, UseInterceptors, Headers } from '@nestjs/common';
 import { QueryValidationPipe, ValidationPipe } from '../pipes';
 import { FilesInterceptor } from '@nestjs/platform-express';
 
@@ -29,7 +28,7 @@ export class RequestController {
 
   @Post('query')
   query(
-    @Body(QUERY_KEY, new QueryValidationPipe(RequestMarketQuery)) query: IQuery<Request[]>, 
+    @Body(QUERY_KEY, new QueryValidationPipe(RequestMarketQuery)) query: IQuery<Request[]>,
     @Body(DTO_KEY, new ValidationPipe()) dto: QueryRequestsDto
   ) {
     return this.requestService.query(query, dto);
@@ -37,7 +36,7 @@ export class RequestController {
 
   @Post('getOne')
   getOne(
-    @Body(QUERY_KEY, new QueryValidationPipe(RequestQuery)) query: IQuery<Request>, 
+    @Body(QUERY_KEY, new QueryValidationPipe(RequestQuery)) query: IQuery<Request>,
     @Body(DTO_KEY, new ValidationPipe()) dto: GetOneRequestDto
   ) {
     return this.requestService.getOne(query, dto);
@@ -45,8 +44,8 @@ export class RequestController {
 
   @Post('getForProfile')
   getForProfile(
-    @Body(QUERY_KEY, new QueryValidationPipe(RequestQuery)) query: IQuery<Request[]>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(RequestQuery)) query: IQuery<Request[]>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: GetRequestsForProfileDto
   ) {
     return this.requestService.getForProfile(query, token, dto);
@@ -54,8 +53,8 @@ export class RequestController {
 
   @Post('create')
   create(
-    @Body(QUERY_KEY, new QueryValidationPipe(RequestQuery)) query: IQuery<Request>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(RequestQuery)) query: IQuery<Request>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: CreateRequestDto
   ) {
     return this.requestService.create(query, token, dto);
@@ -63,8 +62,8 @@ export class RequestController {
 
   @Post('update')
   update(
-    @Body(QUERY_KEY, new QueryValidationPipe(RequestQuery)) query: IQuery<Request>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(RequestQuery)) query: IQuery<Request>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: UpdateRequestDto
   ) {
     return this.requestService.update(query, token, dto);
@@ -72,8 +71,8 @@ export class RequestController {
 
   @Post('delete')
   delete(
-    @Body(QUERY_KEY, new QueryValidationPipe({ deletedId: true })) query: IQuery<{ deletedId: string }>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe({ deletedId: true })) query: IQuery<{ deletedId: string }>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: DeleteRequestDto
   ) {
     return this.requestService.delete(query, token, dto);
@@ -82,9 +81,9 @@ export class RequestController {
   @Post('uploadImages')
   @UseInterceptors(FilesInterceptor(FILES_KEY))
   uploadImages(
-    @Body(QUERY_KEY, new QueryValidationPipe(RequestQuery)) query: IQuery<Request>, 
-    @Headers(TOKEN_KEY) token: string, 
-    @Body(DTO_KEY, new ValidationPipe()) dto: UploadRequestImageDto, 
+    @Body(QUERY_KEY, new QueryValidationPipe(RequestQuery)) query: IQuery<Request>,
+    @Headers(TOKEN_KEY) token: string,
+    @Body(DTO_KEY, new ValidationPipe()) dto: UploadRequestImageDto,
     @UploadedFiles() files: Express.Multer.File[]
   ) {
     return this.requestService.uploadImages(query, token, dto, files);
@@ -92,8 +91,8 @@ export class RequestController {
 
   @Post('deleteImage')
   deleteImage(
-    @Body(QUERY_KEY, new QueryValidationPipe(RequestQuery)) query: IQuery<Request>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(RequestQuery)) query: IQuery<Request>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: DeleteRequestImageDto
   ) {
     return this.requestService.deleteImage(query, token, dto);

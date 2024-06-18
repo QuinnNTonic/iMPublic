@@ -36,11 +36,11 @@
           <div header class="im-primary-text">1. Record Your Time (hh:mm:ss)</div>
           <div body>
             <div class="timer">
-              <div>{{ state.timeElapsedHour | number: '2.0' }}</div>
+              <div>{{ state.timeElapsedHour | number : '2.0' }}</div>
               <div>:</div>
-              <div>{{ state.timeElapsedMinute | number: '2.0' }}</div>
+              <div>{{ state.timeElapsedMinute | number : '2.0' }}</div>
               <div>:</div>
-              <div>{{ state.timeElapsedSecond | number: '2.0' }}</div>
+              <div>{{ state.timeElapsedSecond | number : '2.0' }}</div>
             </div>
             <br />
             <div
@@ -50,7 +50,7 @@
               <div>
                 Automatic Clock Out Date:
                 <br />
-                <b>{{ state.mandatoryClockOutDate | date: 'MMMM d, y, h:mm:ss a' }}</b>
+                <b>{{ state.mandatoryClockOutDate | date : 'MMMM d, y, h:mm:ss a' }}</b>
               </div>
               <br />
               <div>
@@ -144,7 +144,7 @@
         <im-block icon="/assets/icons/cc-menu.svg" [join]="true" *ngIf="state.status! >= PoiStatus.stopped">
           <div header class="im-primary-text">Credit Info</div>
           <div body>
-            Credits Earned: {{ calculateCreditsEarnedForPoi(poi) / 100 | currency: '':'' }}
+            Credits Earned: {{ calculateCreditsEarnedForPoi(poi) / 100 | currency : '' : '' }}
             <ion-icon src="/assets/icons/cc.svg"></ion-icon>
             &nbsp;
             <i *ngIf="state.status! !== PoiStatus.approved">*If approved</i>
@@ -159,29 +159,29 @@
             </div> -->
             <div *ngIf="poi.dateStarted">
               <b [style.color]="'var(--im-poi-started)'">Started:&nbsp;</b>
-              <div>{{ poi.dateStarted | date: 'MMMM d, y, h:mm:ss a' }}</div>
+              <div>{{ poi.dateStarted | date : 'MMMM d, y, h:mm:ss a' }}</div>
             </div>
             <div *ngFor="let t of getPausedResumedTimes(poi)">
               <b [style.color]="t.type === 'resumed' ? 'var(--im-poi-started)' : 'var(--im-poi-paused)'">
                 <span>{{ t.type | titlecase }}:&nbsp;</span>
               </b>
-              <div>{{ t.date | date: 'MMMM d, y, h:mm:ss a' }}</div>
+              <div>{{ t.date | date : 'MMMM d, y, h:mm:ss a' }}</div>
             </div>
             <div *ngIf="poi.dateStopped">
               <b [style.color]="'var(--im-poi-stopped)'">Stopped:&nbsp;</b>
-              <div>{{ poi.dateStopped | date: 'MMMM d, y, h:mm:ss a' }}</div>
+              <div>{{ poi.dateStopped | date : 'MMMM d, y, h:mm:ss a' }}</div>
             </div>
             <div *ngIf="poi.dateSubmitted">
               <b [style.color]="'var(--im-poi-submitted)'">Submitted:&nbsp;</b>
-              <div>{{ poi.dateSubmitted | date: 'MMMM d, y, h:mm:ss a' }}</div>
+              <div>{{ poi.dateSubmitted | date : 'MMMM d, y, h:mm:ss a' }}</div>
             </div>
             <div *ngIf="poi.dateApproved">
               <b [style.color]="'var(--im-poi-approved)'">Approved:&nbsp;</b>
-              <div>{{ poi.dateApproved | date: 'MMMM d, y, h:mm:ss a' }}</div>
+              <div>{{ poi.dateApproved | date : 'MMMM d, y, h:mm:ss a' }}</div>
             </div>
             <div *ngIf="poi.dateDenied">
               <b [style.color]="'var(--im-poi-denied)'">Denied:&nbsp;</b>
-              <div>{{ poi.dateDenied | date: 'MMMM d, y, h:mm:ss a' }}</div>
+              <div>{{ poi.dateDenied | date : 'MMMM d, y, h:mm:ss a' }}</div>
             </div>
           </div>
         </im-block>

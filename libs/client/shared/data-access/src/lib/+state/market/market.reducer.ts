@@ -5,7 +5,7 @@ import {
   OfferMarketQuery,
   Request,
   RequestMarketQuery,
-  IParser
+  IParser,
 } from '@involvemint/shared/domain';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';

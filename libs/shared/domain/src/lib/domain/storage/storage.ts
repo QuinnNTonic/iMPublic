@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export const enum ImStorageFileRoots {
   cmProfileImages = 'cm-profile-images',

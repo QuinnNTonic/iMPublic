@@ -20,7 +20,7 @@ import {
   Voucher,
   voucherCanBeRedeemed,
   voucherCanBeRefunded,
-  IQuery
+  IQuery,
 } from '@involvemint/shared/domain';
 import { guaranteeSixCharUidUniqueness } from '@involvemint/shared/util';
 import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';

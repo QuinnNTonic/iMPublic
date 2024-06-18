@@ -15,7 +15,7 @@ import {
   SubmitEpApplicationDto,
   WithdrawEpApplicationDto,
   IQuery,
-  parseQuery
+  parseQuery,
 } from '@involvemint/shared/domain';
 import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { addMonths } from 'date-fns';
@@ -30,7 +30,6 @@ import { getDefaultAddress } from '@involvemint/shared/domain';
 
 @Injectable()
 export class EpApplicationService {
-
   constructor(
     private readonly epAppRepo: EpApplicationRepository,
     private readonly auth: AuthService,
@@ -45,15 +44,12 @@ export class EpApplicationService {
     const user = await this.auth.validateUserToken(token);
     await this.handle.verifyHandleUniqueness(dto.handle);
     const epAppId = uuid.v4();
-    
+
     let address;
 
-    if(environment.environment === 'local')
-    {
+    if (environment.environment === 'local') {
       address = getDefaultAddress();
-    }
-    else
-    {
+    } else {
       address = {
         id: uuid.v4(),
         address1: dto.address1,
@@ -75,7 +71,7 @@ export class EpApplicationService {
         phone: dto.phone,
         website: dto.website,
         dateCreated: new Date(),
-        address: address
+        address: address,
       },
       query
     );
@@ -111,12 +107,9 @@ export class EpApplicationService {
 
     let address;
 
-    if(environment.environment === 'local')
-    {
+    if (environment.environment === 'local') {
       address = getDefaultAddress();
-    }
-    else
-    {
+    } else {
       address = {
         id: uuid.v4(),
         address1: dto.address1,
@@ -190,12 +183,9 @@ export class EpApplicationService {
 
     let res: geocoder.Entry[];
 
-    if(environment.environment === 'local')
-    {
+    if (environment.environment === 'local') {
       res = environment.defaultLocalAddress;
-    }
-    else
-    {
+    } else {
       const geo = geocoder.default({ provider: 'google', apiKey: environment.gcpApiKey });
       res = await geo.geocode(Object.entries(epApp.address).join(' '));
     }

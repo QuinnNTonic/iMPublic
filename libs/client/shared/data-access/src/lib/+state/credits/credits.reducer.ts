@@ -21,23 +21,17 @@ const initialState: CreditsState = {
 
 export const CreditReducer = createReducer(
   initialState,
-  on(
-    CreditsActions.refreshCreditsForProfile,
-    (state, { profile }): CreditsState => {
-      return {
-        ...state,
-        profileLoaded: state.profileLoaded.filter((p) => p !== profile.id),
-      };
-    }
-  ),
-  on(
-    CreditsActions.loadCreditsForProfileSuccess,
-    (state, { credits, profileId }): CreditsState => {
-      return {
-        ...state,
-        credits: creditsAdapter.upsertMany(credits, state.credits),
-        profileLoaded: [...state.profileLoaded, profileId],
-      };
-    }
-  )
+  on(CreditsActions.refreshCreditsForProfile, (state, { profile }): CreditsState => {
+    return {
+      ...state,
+      profileLoaded: state.profileLoaded.filter((p) => p !== profile.id),
+    };
+  }),
+  on(CreditsActions.loadCreditsForProfileSuccess, (state, { credits, profileId }): CreditsState => {
+    return {
+      ...state,
+      credits: creditsAdapter.upsertMany(credits, state.credits),
+      profileLoaded: [...state.profileLoaded, profileId],
+    };
+  })
 );

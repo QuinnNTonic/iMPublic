@@ -9,7 +9,7 @@ import {
   IParser,
   PAGINATE_KEY,
   PAGINATE_PAGE,
-  PAGINATE_LIMIT
+  PAGINATE_LIMIT,
 } from '@involvemint/shared/domain';
 import { paginate, Pagination } from 'nestjs-typeorm-paginate';
 import { Socket } from 'socket.io';

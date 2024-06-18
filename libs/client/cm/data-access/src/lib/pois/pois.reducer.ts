@@ -21,85 +21,58 @@ const initialState: PoisState = {
 
 export const PoiReducer = createReducer(
   initialState,
-  on(
-    PoisActions.refreshPois,
-    (state): PoisState => {
-      return {
-        ...state,
-        pagesLoaded: 0,
-      };
-    }
-  ),
-  on(
-    PoisActions.loadPoisSuccess,
-    (state, { pois, page }): PoisState => {
-      return {
-        pois: poisAdapter.upsertMany(pois, state.pois),
-        pagesLoaded: page,
-      };
-    }
-  ),
-  on(
-    PoisActions.createPoiSuccess,
-    (state, { poi }): PoisState => {
-      return {
-        ...state,
-        pois: poisAdapter.upsertOne(poi, state.pois),
-      };
-    }
-  ),
-  on(
-    PoisActions.startPoiSuccess,
-    (state, { poi }): PoisState => {
-      return {
-        ...state,
-        pois: poisAdapter.upsertOne(poi, state.pois),
-      };
-    }
-  ),
-  on(
-    PoisActions.withdrawPoiSuccess,
-    (state, { deletedId }): PoisState => {
-      return {
-        ...state,
-        pois: poisAdapter.removeOne(deletedId, state.pois),
-      };
-    }
-  ),
-  on(
-    PoisActions.pausePoiSuccess,
-    (state, { poi }): PoisState => {
-      return {
-        ...state,
-        pois: poisAdapter.upsertOne(poi, state.pois),
-      };
-    }
-  ),
-  on(
-    PoisActions.resumePoiSuccess,
-    (state, { poi }): PoisState => {
-      return {
-        ...state,
-        pois: poisAdapter.upsertOne(poi, state.pois),
-      };
-    }
-  ),
-  on(
-    PoisActions.stopPoiSuccess,
-    (state, { poi }): PoisState => {
-      return {
-        ...state,
-        pois: poisAdapter.upsertOne(poi, state.pois),
-      };
-    }
-  ),
-  on(
-    PoisActions.submitPoiSuccess,
-    (state, { poi }): PoisState => {
-      return {
-        ...state,
-        pois: poisAdapter.upsertOne(poi, state.pois),
-      };
-    }
-  )
+  on(PoisActions.refreshPois, (state): PoisState => {
+    return {
+      ...state,
+      pagesLoaded: 0,
+    };
+  }),
+  on(PoisActions.loadPoisSuccess, (state, { pois, page }): PoisState => {
+    return {
+      pois: poisAdapter.upsertMany(pois, state.pois),
+      pagesLoaded: page,
+    };
+  }),
+  on(PoisActions.createPoiSuccess, (state, { poi }): PoisState => {
+    return {
+      ...state,
+      pois: poisAdapter.upsertOne(poi, state.pois),
+    };
+  }),
+  on(PoisActions.startPoiSuccess, (state, { poi }): PoisState => {
+    return {
+      ...state,
+      pois: poisAdapter.upsertOne(poi, state.pois),
+    };
+  }),
+  on(PoisActions.withdrawPoiSuccess, (state, { deletedId }): PoisState => {
+    return {
+      ...state,
+      pois: poisAdapter.removeOne(deletedId, state.pois),
+    };
+  }),
+  on(PoisActions.pausePoiSuccess, (state, { poi }): PoisState => {
+    return {
+      ...state,
+      pois: poisAdapter.upsertOne(poi, state.pois),
+    };
+  }),
+  on(PoisActions.resumePoiSuccess, (state, { poi }): PoisState => {
+    return {
+      ...state,
+      pois: poisAdapter.upsertOne(poi, state.pois),
+    };
+  }),
+  on(PoisActions.stopPoiSuccess, (state, { poi }): PoisState => {
+    return {
+      ...state,
+      pois: poisAdapter.upsertOne(poi, state.pois),
+    };
+  }),
+  on(PoisActions.submitPoiSuccess, (state, { poi }): PoisState => {
+    return {
+      ...state,
+      pois: poisAdapter.upsertOne(poi, state.pois),
+    };
+  })
 );

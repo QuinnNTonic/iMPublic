@@ -21,41 +21,29 @@ const initialState: EpAdminsState = {
 
 export const EpAdminsReducer = createReducer(
   initialState,
-  on(
-    EpAdminsActions.refreshEpAdmins,
-    (state, { epId }): EpAdminsState => {
-      return {
-        ...state,
-        profilesLoaded: state.profilesLoaded.filter((p) => p !== epId),
-      };
-    }
-  ),
-  on(
-    EpAdminsActions.loadEpAdminsSuccess,
-    (state, { epAdmins, epId }): EpAdminsState => {
-      return {
-        ...state,
-        epAdmins: epAdminsAdapter.upsertMany(epAdmins, state.epAdmins),
-        profilesLoaded: [...state.profilesLoaded, epId],
-      };
-    }
-  ),
-  on(
-    EpAdminsActions.addEpAdminSuccess,
-    (state, { epAdmin }): EpAdminsState => {
-      return {
-        ...state,
-        epAdmins: epAdminsAdapter.upsertOne(epAdmin, state.epAdmins),
-      };
-    }
-  ),
-  on(
-    EpAdminsActions.removeEpAdminSuccess,
-    (state, { deletedId }): EpAdminsState => {
-      return {
-        ...state,
-        epAdmins: epAdminsAdapter.removeOne(deletedId, state.epAdmins),
-      };
-    }
-  )
+  on(EpAdminsActions.refreshEpAdmins, (state, { epId }): EpAdminsState => {
+    return {
+      ...state,
+      profilesLoaded: state.profilesLoaded.filter((p) => p !== epId),
+    };
+  }),
+  on(EpAdminsActions.loadEpAdminsSuccess, (state, { epAdmins, epId }): EpAdminsState => {
+    return {
+      ...state,
+      epAdmins: epAdminsAdapter.upsertMany(epAdmins, state.epAdmins),
+      profilesLoaded: [...state.profilesLoaded, epId],
+    };
+  }),
+  on(EpAdminsActions.addEpAdminSuccess, (state, { epAdmin }): EpAdminsState => {
+    return {
+      ...state,
+      epAdmins: epAdminsAdapter.upsertOne(epAdmin, state.epAdmins),
+    };
+  }),
+  on(EpAdminsActions.removeEpAdminSuccess, (state, { deletedId }): EpAdminsState => {
+    return {
+      ...state,
+      epAdmins: epAdminsAdapter.removeOne(deletedId, state.epAdmins),
+    };
+  })
 );

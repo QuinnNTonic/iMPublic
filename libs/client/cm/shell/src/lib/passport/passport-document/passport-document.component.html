@@ -36,7 +36,7 @@
         <iframe
           [style.cursor]="'pointer'"
           (click)="open(url)"
-          [src]="document.filePath | imStorageUrl: true | async"
+          [src]="document.filePath | imStorageUrl : true | async"
           frameborder="no"
         ></iframe>
       </div>

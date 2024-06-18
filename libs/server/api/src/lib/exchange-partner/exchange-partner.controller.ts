@@ -18,14 +18,7 @@ import {
   QUERY_KEY,
   FILES_KEY,
 } from '@involvemint/shared/domain';
-import { 
-  Controller,
-  Post,
-  Body,
-  UseInterceptors,
-  UploadedFiles,
-  Headers
-} from '@nestjs/common';
+import { Controller, Post, Body, UseInterceptors, UploadedFiles, Headers } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { QueryValidationPipe, ValidationPipe } from '../pipes';
 
@@ -35,7 +28,7 @@ export class ExchangePartnerController {
 
   @Post('query')
   query(
-    @Body(QUERY_KEY, new QueryValidationPipe(ExchangePartnerMarketQuery)) query: IQuery<ExchangePartner[]>, 
+    @Body(QUERY_KEY, new QueryValidationPipe(ExchangePartnerMarketQuery)) query: IQuery<ExchangePartner[]>,
     @Body(DTO_KEY, new ValidationPipe()) dto: ExchangePartnerMarketQueryDto
   ) {
     return this.ep.query(query, dto);
@@ -43,7 +36,7 @@ export class ExchangePartnerController {
 
   @Post('getOne')
   async getOne(
-    @Body(QUERY_KEY, new QueryValidationPipe(ExchangePartnerMarketQuery)) query: IQuery<ExchangePartner>, 
+    @Body(QUERY_KEY, new QueryValidationPipe(ExchangePartnerMarketQuery)) query: IQuery<ExchangePartner>,
     @Body(DTO_KEY, new ValidationPipe()) dto: GetOneExchangePartnerDto
   ) {
     return this.ep.getOne(query, dto);
@@ -51,7 +44,7 @@ export class ExchangePartnerController {
 
   @Post('searchEps')
   async searchEps(
-    @Body(QUERY_KEY, new QueryValidationPipe(ExchangePartnerSearchQuery)) query: IQuery<ExchangePartner>, 
+    @Body(QUERY_KEY, new QueryValidationPipe(ExchangePartnerSearchQuery)) query: IQuery<ExchangePartner>,
     @Body(DTO_KEY, new ValidationPipe()) dto: SearchEpDto
   ) {
     return this.ep.searchEps(query, dto);
@@ -59,8 +52,9 @@ export class ExchangePartnerController {
 
   @Post('editProfile')
   async editProfile(
-    @Body(QUERY_KEY, new QueryValidationPipe(UserQuery.exchangeAdmins.exchangePartner)) query: IQuery<ExchangePartner>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(UserQuery.exchangeAdmins.exchangePartner))
+    query: IQuery<ExchangePartner>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: EditEpProfileDto
   ) {
     return this.ep.editProfile(query, token, dto);
@@ -69,9 +63,10 @@ export class ExchangePartnerController {
   @Post('updateLogoFile')
   @UseInterceptors(FilesInterceptor(FILES_KEY))
   async updateLogoFile(
-    @Body(QUERY_KEY, new QueryValidationPipe(UserQuery.exchangeAdmins.exchangePartner)) query: IQuery<ExchangePartner>, 
-    @Headers(TOKEN_KEY) token: string, 
-    @Body(DTO_KEY, new ValidationPipe()) dto: UpdateEpLogoFileDto, 
+    @Body(QUERY_KEY, new QueryValidationPipe(UserQuery.exchangeAdmins.exchangePartner))
+    query: IQuery<ExchangePartner>,
+    @Headers(TOKEN_KEY) token: string,
+    @Body(DTO_KEY, new ValidationPipe()) dto: UpdateEpLogoFileDto,
     @UploadedFiles() files: Express.Multer.File[]
   ) {
     return this.ep.updateLogoFile(query, token, dto, files[0]);
@@ -80,9 +75,10 @@ export class ExchangePartnerController {
   @Post('uploadImages')
   @UseInterceptors(FilesInterceptor(FILES_KEY))
   async uploadImages(
-    @Body(QUERY_KEY, new QueryValidationPipe(UserQuery.exchangeAdmins.exchangePartner)) query: IQuery<ExchangePartner>, 
-    @Headers(TOKEN_KEY) token: string, 
-    @Body(DTO_KEY, new ValidationPipe()) dto: UploadEpImagesDto, 
+    @Body(QUERY_KEY, new QueryValidationPipe(UserQuery.exchangeAdmins.exchangePartner))
+    query: IQuery<ExchangePartner>,
+    @Headers(TOKEN_KEY) token: string,
+    @Body(DTO_KEY, new ValidationPipe()) dto: UploadEpImagesDto,
     @UploadedFiles() files: Express.Multer.File[]
   ) {
     return this.ep.uploadImages(query, token, dto, files);
@@ -90,8 +86,9 @@ export class ExchangePartnerController {
 
   @Post('deleteImage')
   async deleteImage(
-    @Body(QUERY_KEY, new QueryValidationPipe(UserQuery.exchangeAdmins.exchangePartner)) query: IQuery<ExchangePartner>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(UserQuery.exchangeAdmins.exchangePartner))
+    query: IQuery<ExchangePartner>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: DeleteEpImageDto
   ) {
     return this.ep.deleteImage(query, token, dto);

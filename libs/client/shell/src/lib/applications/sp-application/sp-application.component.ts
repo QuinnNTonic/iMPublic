@@ -1,10 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
-import {
-  HandleRestClient,
-  UserFacade,
-  verifyHandleUniqueness,
-} from '@involvemint/client/shared/data-access';
+import { HandleRestClient, UserFacade, verifyHandleUniqueness } from '@involvemint/client/shared/data-access';
 import { ConfirmDeactivationGuard, StatefulComponent } from '@involvemint/client/shared/util';
 import { ImConfig, SubmitSpApplicationDto } from '@involvemint/shared/domain';
 import { STATES } from '@involvemint/shared/util';
@@ -27,7 +23,8 @@ interface State {
 })
 export class SpApplicationComponent
   extends StatefulComponent<State>
-  implements OnInit, ConfirmDeactivationGuard {
+  implements OnInit, ConfirmDeactivationGuard
+{
   readonly spForm = new FormGroup<SpForm>({
     address1: new FormControl('', [(c) => Validators.required(c)]),
     address2: new FormControl(''),

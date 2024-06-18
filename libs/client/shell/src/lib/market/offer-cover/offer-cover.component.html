@@ -45,7 +45,7 @@
     <div class="im-cont" *ngIf="state.offer as offer">
       <div [style.font-size]="'1.1em'" [style.text-align]="'center'">
         <b>Cost:&nbsp;</b>
-        <span class="im-primary-text">{{ offer.price / 100 | currency: '':'' }}</span>
+        <span class="im-primary-text">{{ offer.price / 100 | currency : '' : '' }}</span>
         <ion-icon src="/assets/icons/cc.svg"></ion-icon>
         <span [style.opacity]="'.6'">&nbsp;({{ offer.price / 100 | currency }} USD)</span>
       </div>

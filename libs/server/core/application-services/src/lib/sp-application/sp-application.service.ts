@@ -11,7 +11,7 @@ import {
   SubmitSpApplicationDto,
   WithdrawSpApplicationDto,
   IQuery,
-  parseQuery
+  parseQuery,
 } from '@involvemint/shared/domain';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import * as geocoder from 'node-geocoder';
@@ -52,12 +52,9 @@ export class SpApplicationService {
 
     let address;
 
-    if(environment.environment === 'local')
-    {
+    if (environment.environment === 'local') {
       address = getDefaultAddress();
-    }
-    else
-    {
+    } else {
       address = {
         id: uuid.v4(),
         address1: dto.address1,
@@ -67,7 +64,7 @@ export class SpApplicationService {
         zip: dto.zip,
       };
     }
-    
+
     const spApp = await this.spAppRepo.upsert(
       {
         id: spAppId,
@@ -114,12 +111,9 @@ export class SpApplicationService {
 
     let res: geocoder.Entry[];
 
-    if(environment.environment === 'local')
-    {
+    if (environment.environment === 'local') {
       res = environment.defaultLocalAddress;
-    }
-    else
-    {
+    } else {
       const geo = geocoder.default({ provider: 'google', apiKey: environment.gcpApiKey });
       res = await geo.geocode(Object.entries(spApp.address).join(' '));
     }

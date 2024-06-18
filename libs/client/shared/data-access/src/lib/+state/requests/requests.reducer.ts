@@ -21,68 +21,47 @@ const initialState: RequestsState = {
 
 export const RequestReducer = createReducer(
   initialState,
-  on(
-    RequestsActions.refreshRequestsForProfile,
-    (state, { profile }): RequestsState => {
-      return {
-        ...state,
-        profileLoaded: state.profileLoaded.filter((p) => p !== profile.id),
-      };
-    }
-  ),
-  on(
-    RequestsActions.loadRequestsForProfileSuccess,
-    (state, { requests, profileId }): RequestsState => {
-      return {
-        ...state,
-        requests: requestsAdapter.upsertMany(requests, state.requests),
-        profileLoaded: [...state.profileLoaded, profileId],
-      };
-    }
-  ),
-  on(
-    RequestsActions.createRequestSuccess,
-    (state, { request }): RequestsState => {
-      return {
-        ...state,
-        requests: requestsAdapter.upsertOne(request, state.requests),
-      };
-    }
-  ),
-  on(
-    RequestsActions.updateRequestSuccess,
-    (state, { request }): RequestsState => {
-      return {
-        ...state,
-        requests: requestsAdapter.upsertOne(request, state.requests),
-      };
-    }
-  ),
-  on(
-    RequestsActions.deleteRequestSuccess,
-    (state, { deletedId }): RequestsState => {
-      return {
-        ...state,
-        requests: requestsAdapter.removeOne(deletedId, state.requests),
-      };
-    }
-  ),
-  on(
-    RequestsActions.uploadImagesSuccess,
-    (state, { request }): RequestsState => {
-      return {
-        ...state,
-        requests: requestsAdapter.upsertOne(request, state.requests),
-      };
-    }
-  ),
-  on(
-    RequestsActions.deleteImageSuccess,
-    (state, { request }): RequestsState => {
-      return {
-        ...state,
-        requests: requestsAdapter.upsertOne(request, state.requests),
-      };
-    }
-  )
+  on(RequestsActions.refreshRequestsForProfile, (state, { profile }): RequestsState => {
+    return {
+      ...state,
+      profileLoaded: state.profileLoaded.filter((p) => p !== profile.id),
+    };
+  }),
+  on(RequestsActions.loadRequestsForProfileSuccess, (state, { requests, profileId }): RequestsState => {
+    return {
+      ...state,
+      requests: requestsAdapter.upsertMany(requests, state.requests),
+      profileLoaded: [...state.profileLoaded, profileId],
+    };
+  }),
+  on(RequestsActions.createRequestSuccess, (state, { request }): RequestsState => {
+    return {
+      ...state,
+      requests: requestsAdapter.upsertOne(request, state.requests),
+    };
+  }),
+  on(RequestsActions.updateRequestSuccess, (state, { request }): RequestsState => {
+    return {
+      ...state,
+      requests: requestsAdapter.upsertOne(request, state.requests),
+    };
+  }),
+  on(RequestsActions.deleteRequestSuccess, (state, { deletedId }): RequestsState => {
+    return {
+      ...state,
+      requests: requestsAdapter.removeOne(deletedId, state.requests),
+    };
+  }),
+  on(RequestsActions.uploadImagesSuccess, (state, { request }): RequestsState => {
+    return {
+      ...state,
+      requests: requestsAdapter.upsertOne(request, state.requests),
+    };
+  }),
+  on(RequestsActions.deleteImageSuccess, (state, { request }): RequestsState => {
+    return {
+      ...state,
+      requests: requestsAdapter.upsertOne(request, state.requests),
+    };
+  })
 );

@@ -1,4 +1,8 @@
-import { ProcessEpApplicationDto, ProcessSpApplicationDto, APIOperationError } from '@involvemint/shared/domain';
+import {
+  ProcessEpApplicationDto,
+  ProcessSpApplicationDto,
+  APIOperationError,
+} from '@involvemint/shared/domain';
 import { createAction, props } from '@ngrx/store';
 import { EpApplicationStoreModel, SpApplicationStoreModel } from './applications.reducer';
 

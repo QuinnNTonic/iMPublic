@@ -21,33 +21,24 @@ const initialState: ProjectsState = {
 
 export const ProjectsReducer = createReducer(
   initialState,
-  on(
-    ProjectActions.refreshProjects,
-    (state): ProjectsState => {
-      return {
-        ...state,
-        projects: projectsAdapter.removeAll(state.projects),
-        pagesLoaded: 0,
-      };
-    }
-  ),
-  on(
-    ProjectActions.projectsLoadSuccess,
-    (state, { items, page }): ProjectsState => {
-      return {
-        ...state,
-        projects: projectsAdapter.upsertMany(items, state.projects),
-        pagesLoaded: page,
-      };
-    }
-  ),
-  on(
-    ProjectActions.getProjectSuccess,
-    (state, { project }): ProjectsState => {
-      return {
-        ...state,
-        projects: projectsAdapter.upsertOne(project, state.projects),
-      };
-    }
-  )
+  on(ProjectActions.refreshProjects, (state): ProjectsState => {
+    return {
+      ...state,
+      projects: projectsAdapter.removeAll(state.projects),
+      pagesLoaded: 0,
+    };
+  }),
+  on(ProjectActions.projectsLoadSuccess, (state, { items, page }): ProjectsState => {
+    return {
+      ...state,
+      projects: projectsAdapter.upsertMany(items, state.projects),
+      pagesLoaded: page,
+    };
+  }),
+  on(ProjectActions.getProjectSuccess, (state, { project }): ProjectsState => {
+    return {
+      ...state,
+      projects: projectsAdapter.upsertOne(project, state.projects),
+    };
+  })
 );

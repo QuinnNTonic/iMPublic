@@ -1,7 +1,7 @@
 <ion-icon (click)="close('dismiss')" name="close-circle" class="close"></ion-icon>
 <div class="cont bg-color" [ngStyle]="{ gap: amount ? '0.5em' : '0' }" (click)="close('action')">
   <div class="amount-cont" *ngIf="amount">
-    <span>{{ amount / 100 | currency: '':'' }}</span>
+    <span>{{ amount / 100 | currency : '' : '' }}</span>
     <ion-icon src="/assets/icons/cc.svg"></ion-icon>
   </div>
   <div class="content" [innerHTML]="safeContent"></div>

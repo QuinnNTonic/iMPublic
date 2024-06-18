@@ -23,7 +23,8 @@ interface State {
 })
 export class EnrollmentsModalComponent
   extends StatefulComponent<State>
-  implements OnInit, EnrollmentsModalComponentInputs {
+  implements OnInit, EnrollmentsModalComponentInputs
+{
   @Input() title = '';
   @Input() header = '';
 

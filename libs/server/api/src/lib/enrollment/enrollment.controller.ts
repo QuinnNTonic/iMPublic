@@ -19,30 +19,25 @@ import {
   DTO_KEY,
   Project,
 } from '@involvemint/shared/domain';
-import {
-    Controller,
-    Post,
-    Body,
-    Headers
-  } from '@nestjs/common';
+import { Controller, Post, Body, Headers } from '@nestjs/common';
 import { QueryValidationPipe, ValidationPipe } from '../pipes';
 
 @Controller(InvolvemintRoutes.enrollment)
 export class EnrollmentController {
-    constructor(private readonly enrollmentService: EnrollmentService) {}
+  constructor(private readonly enrollmentService: EnrollmentService) {}
 
   @Post('get')
   get(
-    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsQuery)) query: IQuery<Enrollment[]>, 
-    @Headers(TOKEN_KEY) token: string 
-  ){
-      return this.enrollmentService.get(query, token);
+    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsQuery)) query: IQuery<Enrollment[]>,
+    @Headers(TOKEN_KEY) token: string
+  ) {
+    return this.enrollmentService.get(query, token);
   }
 
   @Post('getBySpProject')
   getBySpProject(
-    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsSpQuery)) query: IQuery<Enrollment[]>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsSpQuery)) query: IQuery<Enrollment[]>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: GetEnrollmentsBySpProject
   ) {
     return this.enrollmentService.getBySpProject(query, token, dto);
@@ -50,8 +45,8 @@ export class EnrollmentController {
 
   @Post('startApplication')
   startApplication(
-    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsQuery)) query: IQuery<Enrollment>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsQuery)) query: IQuery<Enrollment>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: StartEnrollmentApplicationDto
   ) {
     return this.enrollmentService.startApplication(query, token, dto);
@@ -59,17 +54,17 @@ export class EnrollmentController {
 
   @Post('withdraw')
   withdraw(
-    @Body(QUERY_KEY, new QueryValidationPipe({ deletedId: true })) query: IQuery<{ deletedId: string }>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe({ deletedId: true })) query: IQuery<{ deletedId: string }>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: WithdrawEnrollmentApplicationDto
-    ) {
+  ) {
     return this.enrollmentService.withdraw(query, token, dto);
   }
 
   @Post('linkPassportDocument')
   linkPassportDocument(
-    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsQuery)) query: IQuery<Enrollment>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsQuery)) query: IQuery<Enrollment>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: LinkPassportDocumentDto
   ) {
     return this.enrollmentService.linkPassportDocument(query, token, dto);
@@ -77,8 +72,8 @@ export class EnrollmentController {
 
   @Post('submitApplication')
   submitApplication(
-    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsQuery)) query: IQuery<Enrollment>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsQuery)) query: IQuery<Enrollment>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: SubmitEnrollmentApplicationDto
   ) {
     return this.enrollmentService.submitApplication(query, token, dto);
@@ -86,8 +81,8 @@ export class EnrollmentController {
 
   @Post('acceptWaiver')
   acceptWaiver(
-    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsQuery)) query: IQuery<Enrollment>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsQuery)) query: IQuery<Enrollment>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: AcceptWaiverDto
   ) {
     return this.enrollmentService.acceptWaiver(query, token, dto);
@@ -95,8 +90,8 @@ export class EnrollmentController {
 
   @Post('processEnrollmentApplication')
   processEnrollmentApplication(
-    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsSpQuery)) query: IQuery<Project>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsSpQuery)) query: IQuery<Project>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: ProcessEnrollmentApplicationDto
   ) {
     return this.enrollmentService.processEnrollmentApplication(query, token, dto);
@@ -104,8 +99,8 @@ export class EnrollmentController {
 
   @Post('revertEnrollmentApplication')
   revertEnrollmentApplication(
-    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsSpQuery)) query: IQuery<Project>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsSpQuery)) query: IQuery<Project>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: RevertEnrollmentApplicationDto
   ) {
     return this.enrollmentService.revertEnrollmentApplication(query, token, dto);
@@ -113,8 +108,8 @@ export class EnrollmentController {
 
   @Post('retireEnrollment')
   retireEnrollment(
-    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsSpQuery)) query: IQuery<Project>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EnrollmentsSpQuery)) query: IQuery<Project>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: RetireEnrollmentDto
   ) {
     return this.enrollmentService.retireEnrollment(query, token, dto);

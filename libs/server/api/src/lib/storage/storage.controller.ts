@@ -8,8 +8,7 @@ import {
   DTO_KEY,
   QUERY_KEY,
 } from '@involvemint/shared/domain';
-import { Controller, Post, Body,
-  Headers } from '@nestjs/common';
+import { Controller, Post, Body, Headers } from '@nestjs/common';
 import { QueryValidationPipe, ValidationPipe } from '../pipes';
 
 @Controller(InvolvemintRoutes.storage)
@@ -20,7 +19,7 @@ export class StorageController {
   async getUrl(
     @Body(QUERY_KEY, new QueryValidationPipe({ url: true })) query: IQuery<{ url: string }>,
     @Headers(TOKEN_KEY) token: string,
-    @Body(DTO_KEY, new ValidationPipe()) dto: GetStorageFileDto,
+    @Body(DTO_KEY, new ValidationPipe()) dto: GetStorageFileDto
   ) {
     const url = await this.storageService.authenticateFileRequest(dto.path, token);
     return parseQuery(query, { url });

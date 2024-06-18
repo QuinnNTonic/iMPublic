@@ -21,31 +21,22 @@ const initialState: PoisState = {
 
 export const PoiReducer = createReducer(
   initialState,
-  on(
-    PoisActions.refreshPois,
-    (state): PoisState => {
-      return {
-        ...state,
-        projectsLoaded: [],
-      };
-    }
-  ),
-  on(
-    PoisActions.loadPoisByProjectSuccess,
-    (state, { pois, projectId }): PoisState => {
-      return {
-        pois: poisAdapter.upsertMany(pois, state.pois),
-        projectsLoaded: [...state.projectsLoaded, projectId],
-      };
-    }
-  ),
-  on(
-    PoisActions.approvePoiSuccess,
-    (state, { poi }): PoisState => {
-      return {
-        ...state,
-        pois: poisAdapter.upsertOne(poi, state.pois),
-      };
-    }
-  )
+  on(PoisActions.refreshPois, (state): PoisState => {
+    return {
+      ...state,
+      projectsLoaded: [],
+    };
+  }),
+  on(PoisActions.loadPoisByProjectSuccess, (state, { pois, projectId }): PoisState => {
+    return {
+      pois: poisAdapter.upsertMany(pois, state.pois),
+      projectsLoaded: [...state.projectsLoaded, projectId],
+    };
+  }),
+  on(PoisActions.approvePoiSuccess, (state, { poi }): PoisState => {
+    return {
+      ...state,
+      pois: poisAdapter.upsertOne(poi, state.pois),
+    };
+  })
 );

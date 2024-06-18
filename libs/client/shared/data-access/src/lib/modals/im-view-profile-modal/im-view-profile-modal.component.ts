@@ -14,7 +14,7 @@ import {
   ViewProfileInfoOfferQuery,
   ViewProfileInfoQuery,
   ViewProfileInfoRequestQuery,
-  IParser
+  IParser,
 } from '@involvemint/shared/domain';
 import { ModalController } from '@ionic/angular';
 import { of } from 'rxjs';

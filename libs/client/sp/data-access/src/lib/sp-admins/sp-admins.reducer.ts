@@ -21,41 +21,29 @@ const initialState: SpAdminsState = {
 
 export const SpAdminsReducer = createReducer(
   initialState,
-  on(
-    SpAdminsActions.refreshSpAdmins,
-    (state, { spId }): SpAdminsState => {
-      return {
-        ...state,
-        profilesLoaded: state.profilesLoaded.filter((p) => p !== spId),
-      };
-    }
-  ),
-  on(
-    SpAdminsActions.loadSpAdminsSuccess,
-    (state, { spAdmins, spId }): SpAdminsState => {
-      return {
-        ...state,
-        spAdmins: spAdminsAdapter.upsertMany(spAdmins, state.spAdmins),
-        profilesLoaded: [...state.profilesLoaded, spId],
-      };
-    }
-  ),
-  on(
-    SpAdminsActions.addSpAdminSuccess,
-    (state, { spAdmin }): SpAdminsState => {
-      return {
-        ...state,
-        spAdmins: spAdminsAdapter.upsertOne(spAdmin, state.spAdmins),
-      };
-    }
-  ),
-  on(
-    SpAdminsActions.removeSpAdminSuccess,
-    (state, { deletedId }): SpAdminsState => {
-      return {
-        ...state,
-        spAdmins: spAdminsAdapter.removeOne(deletedId, state.spAdmins),
-      };
-    }
-  )
+  on(SpAdminsActions.refreshSpAdmins, (state, { spId }): SpAdminsState => {
+    return {
+      ...state,
+      profilesLoaded: state.profilesLoaded.filter((p) => p !== spId),
+    };
+  }),
+  on(SpAdminsActions.loadSpAdminsSuccess, (state, { spAdmins, spId }): SpAdminsState => {
+    return {
+      ...state,
+      spAdmins: spAdminsAdapter.upsertMany(spAdmins, state.spAdmins),
+      profilesLoaded: [...state.profilesLoaded, spId],
+    };
+  }),
+  on(SpAdminsActions.addSpAdminSuccess, (state, { spAdmin }): SpAdminsState => {
+    return {
+      ...state,
+      spAdmins: spAdminsAdapter.upsertOne(spAdmin, state.spAdmins),
+    };
+  }),
+  on(SpAdminsActions.removeSpAdminSuccess, (state, { deletedId }): SpAdminsState => {
+    return {
+      ...state,
+      spAdmins: spAdminsAdapter.removeOne(deletedId, state.spAdmins),
+    };
+  })
 );

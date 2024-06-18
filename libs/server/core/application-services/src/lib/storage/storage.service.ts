@@ -37,7 +37,6 @@ export class StorageService {
       expires: ImConfig.storageExpiration(),
     } as const;
 
-    
     if (process.env.FIREBASE_STORAGE_EMULATOR_HOST) {
       return file.publicUrl();
     }

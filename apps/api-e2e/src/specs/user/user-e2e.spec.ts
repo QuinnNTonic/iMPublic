@@ -47,30 +47,28 @@ describe('User Integration Tests', () => {
     });
     it('should not login with unknown user', async () => {
       const { error } = await supertest(app.getHttpServer())
-      .post('/user/login')
-      .send({
-        [QUERY_KEY]: { [TOKEN_KEY]: true },
-        [DTO_KEY]: {
-          id: 'who@dis.com',
-          password: 'Idk12345!',
-        }
-      });
+        .post('/user/login')
+        .send({
+          [QUERY_KEY]: { [TOKEN_KEY]: true },
+          [DTO_KEY]: {
+            id: 'who@dis.com',
+            password: 'Idk12345!',
+          },
+        });
 
-      if(error !== false)
-      {
+      if (error !== false) {
         expect(JSON.parse(error.text).message).toBe(`User "who@dis.com" does not exist.`);
       }
     });
     it('should not signUp if user email already exists', async () => {
       const { error } = await supertest(app.getHttpServer())
-      .post('/user/signUp')
-      .send({
-        [QUERY_KEY]: { [TOKEN_KEY]: true },
-        [DTO_KEY]: creds,
-      });
+        .post('/user/signUp')
+        .send({
+          [QUERY_KEY]: { [TOKEN_KEY]: true },
+          [DTO_KEY]: creds,
+        });
 
-      if(error !== false)
-      {
+      if (error !== false) {
         expect(JSON.parse(error.text).message).toBe(`User with email "${creds.id}" already exists.`);
       }
     });
@@ -78,29 +76,28 @@ describe('User Integration Tests', () => {
   describe('login', () => {
     it('should login', async () => {
       auth = await supertest(app.getHttpServer())
-      .post('/user/login')
-      .set(TOKEN_KEY, auth.body.token)
-      .send({
-        [QUERY_KEY]: { [TOKEN_KEY]: true },
-        [DTO_KEY]: creds
-      });
+        .post('/user/login')
+        .set(TOKEN_KEY, auth.body.token)
+        .send({
+          [QUERY_KEY]: { [TOKEN_KEY]: true },
+          [DTO_KEY]: creds,
+        });
       expect(typeof auth.body.token).toBe('string');
       expect(auth.statusCode).toBe(HttpStatus.CREATED);
     });
     it('should not login with wrong password', async () => {
-      const {statusCode, error } = await supertest(app.getHttpServer())
-      .post('/user/login')
-      .send({
-        [QUERY_KEY]: { [TOKEN_KEY]: true },
-        [DTO_KEY]: {
-          ...creds,
-          password: 'nope',
-        }
-      });
+      const { statusCode, error } = await supertest(app.getHttpServer())
+        .post('/user/login')
+        .send({
+          [QUERY_KEY]: { [TOKEN_KEY]: true },
+          [DTO_KEY]: {
+            ...creds,
+            password: 'nope',
+          },
+        });
 
       expect(statusCode).toBe(HttpStatus.UNAUTHORIZED);
-      if(error !== false)
-      {
+      if (error !== false) {
         expect(JSON.parse(error.text).message).toBe(`Incorrect password.`);
       }
     });
@@ -109,11 +106,11 @@ describe('User Integration Tests', () => {
   describe('getUserData', () => {
     it('should get user data', async () => {
       const { body } = await supertest(app.getHttpServer())
-      .post('/user/getUserData')
-      .set(TOKEN_KEY, auth.body.token)
-      .send({
-        [QUERY_KEY]: { id: true }
-      });
+        .post('/user/getUserData')
+        .set(TOKEN_KEY, auth.body.token)
+        .send({
+          [QUERY_KEY]: { id: true },
+        });
       expect(body.id).toBe(creds.id);
     });
 
@@ -124,10 +121,10 @@ describe('User Integration Tests', () => {
     it('should not give user data if unverified email', async () => {
       environment.environment = 'production';
       const { statusCode } = await supertest(app.getHttpServer())
-      .post('/user/getUserData')
-      .send({
-        [QUERY_KEY]: {}
-      });
+        .post('/user/getUserData')
+        .send({
+          [QUERY_KEY]: {},
+        });
       expect(statusCode).toBe(HttpStatus.UNAUTHORIZED);
       environment.environment = 'local';
     });
@@ -138,11 +135,11 @@ describe('User Integration Tests', () => {
       const { activationHash } = await userRepo.findOneOrFail(creds.id);
       expect(activationHash).toBeFalsy;
       const { statusCode } = await supertest(app.getHttpServer())
-      .post('/user/resendEmailVerificationEmail')
-      .send({
-        [QUERY_KEY]: {},
-        [DTO_KEY]: { userId: creds.id }
-      });
+        .post('/user/resendEmailVerificationEmail')
+        .send({
+          [QUERY_KEY]: {},
+          [DTO_KEY]: { userId: creds.id },
+        });
       expect(statusCode).toBe(HttpStatus.CREATED);
       const user = await userRepo.findOneOrFail(creds.id);
       expect(user.activationHash).not.toBe(activationHash);
@@ -154,11 +151,11 @@ describe('User Integration Tests', () => {
       let user = await userRepo.findOneOrFail(creds.id);
       expect(user.active).toBe(false);
       await supertest(app.getHttpServer())
-      .post('/user/verifyEmail')
-      .send({
-        [QUERY_KEY]: {},
-        [DTO_KEY]: { email: user.id, hash: user.activationHash ?? '' }
-      });
+        .post('/user/verifyEmail')
+        .send({
+          [QUERY_KEY]: {},
+          [DTO_KEY]: { email: user.id, hash: user.activationHash ?? '' },
+        });
       user = await userRepo.findOneOrFail(creds.id);
       expect(user.active).toBe(true);
     });
@@ -166,11 +163,11 @@ describe('User Integration Tests', () => {
       let user = await userRepo.findOneOrFail(creds.id);
       expect(user.active).toBe(false);
       await supertest(app.getHttpServer())
-      .post('/user/verifyEmail')
-      .send({
-        [QUERY_KEY]: {},
-        [DTO_KEY]: { email: user.id, hash: 'wrong hash' }
-      });
+        .post('/user/verifyEmail')
+        .send({
+          [QUERY_KEY]: {},
+          [DTO_KEY]: { email: user.id, hash: 'wrong hash' },
+        });
       user = await userRepo.findOneOrFail(creds.id);
       expect(user.active).toBe(false);
     });
@@ -181,11 +178,11 @@ describe('User Integration Tests', () => {
       let user = await userRepo.findOneOrFail(creds.id);
       expect(user.forgotPasswordHash).toBeFalsy();
       await supertest(app.getHttpServer())
-      .post('/user/forgotPassword')
-      .send({
-        [QUERY_KEY]: {},
-        [DTO_KEY]: { email: user.id }
-      });
+        .post('/user/forgotPassword')
+        .send({
+          [QUERY_KEY]: {},
+          [DTO_KEY]: { email: user.id },
+        });
       user = await userRepo.findOneOrFail(creds.id);
       expect(user.forgotPasswordHash).toBeTruthy();
     }
@@ -195,24 +192,24 @@ describe('User Integration Tests', () => {
 
       const password = 'NewPassword!1';
       await supertest(app.getHttpServer())
-      .post('/user/forgotPasswordChange')
-      .send({
-        [QUERY_KEY]: {},
-        [DTO_KEY]: {
-          email: user.id,
-          hash: user.forgotPasswordHash ?? '',
-          password,
-        }
-      });
+        .post('/user/forgotPasswordChange')
+        .send({
+          [QUERY_KEY]: {},
+          [DTO_KEY]: {
+            email: user.id,
+            hash: user.forgotPasswordHash ?? '',
+            password,
+          },
+        });
       user = await userRepo.findOneOrFail(creds.id);
       expect(user.forgotPasswordHash).toBeFalsy();
 
-      const res  = await supertest(app.getHttpServer())
-      .post('/user/login')
-      .send({
-        [QUERY_KEY]: { [TOKEN_KEY]: true },
-        [DTO_KEY]: { id: user.id, password }
-      });
+      const res = await supertest(app.getHttpServer())
+        .post('/user/login')
+        .send({
+          [QUERY_KEY]: { [TOKEN_KEY]: true },
+          [DTO_KEY]: { id: user.id, password },
+        });
 
       expect(typeof res.body.token).toBe('string');
       expect(res.statusCode).toBe(HttpStatus.CREATED);
@@ -223,15 +220,15 @@ describe('User Integration Tests', () => {
 
       const password = 'NewPassword!1';
       const res = await supertest(app.getHttpServer())
-      .post('/user/forgotPasswordChange')
-      .send({
-        [QUERY_KEY]: {},
-        [DTO_KEY]: {
-          email: user.id,
-          hash: 'wrong hash',
-          password,
-        }
-      });
+        .post('/user/forgotPasswordChange')
+        .send({
+          [QUERY_KEY]: {},
+          [DTO_KEY]: {
+            email: user.id,
+            hash: 'wrong hash',
+            password,
+          },
+        });
 
       expect(res.statusCode).toBe(HttpStatus.UNAUTHORIZED);
       user = await userRepo.findOneOrFail(creds.id);
@@ -243,49 +240,49 @@ describe('User Integration Tests', () => {
     it('should change password if current password is correct', async () => {
       const password = 'NewPassword!1';
       const changePwdRes = await supertest(app.getHttpServer())
-      .post('/user/changePassword')
-      .set(TOKEN_KEY, auth.body.token)
-      .send({
-        [QUERY_KEY]: {},
-        [DTO_KEY]: {
-          currentPassword: creds.password,
-          newPassword: password,
-        }
-      });
+        .post('/user/changePassword')
+        .set(TOKEN_KEY, auth.body.token)
+        .send({
+          [QUERY_KEY]: {},
+          [DTO_KEY]: {
+            currentPassword: creds.password,
+            newPassword: password,
+          },
+        });
 
       expect(changePwdRes.statusCode).toBe(HttpStatus.CREATED);
 
-      const loginRes  = await supertest(app.getHttpServer())
-      .post('/user/login')
-      .send({
-        [QUERY_KEY]: { [TOKEN_KEY]: true },
-        [DTO_KEY]: { id: creds.id, password }
-      });
+      const loginRes = await supertest(app.getHttpServer())
+        .post('/user/login')
+        .send({
+          [QUERY_KEY]: { [TOKEN_KEY]: true },
+          [DTO_KEY]: { id: creds.id, password },
+        });
 
       expect(typeof loginRes.body.token).toBe('string');
       expect(loginRes.statusCode).toBe(HttpStatus.CREATED);
     });
     it('should forbid password change if current password is incorrect', async () => {
       const password = 'NewPassword!1';
-      const changePwdRes  = await supertest(app.getHttpServer())
-      .post('/user/changePassword')
-      .set(TOKEN_KEY, auth.body.token)
-      .send({
-        [QUERY_KEY]: {},
-        [DTO_KEY]: {
-          currentPassword: 'WrongPassword!1',
-          newPassword: password,
-        }
-      });
+      const changePwdRes = await supertest(app.getHttpServer())
+        .post('/user/changePassword')
+        .set(TOKEN_KEY, auth.body.token)
+        .send({
+          [QUERY_KEY]: {},
+          [DTO_KEY]: {
+            currentPassword: 'WrongPassword!1',
+            newPassword: password,
+          },
+        });
 
       expect(changePwdRes.statusCode).toBe(HttpStatus.UNAUTHORIZED);
 
-      const loginRes  = await supertest(app.getHttpServer())
-      .post('/user/login')
-      .send({
-        [QUERY_KEY]: { [TOKEN_KEY]: true },
-        [DTO_KEY]: { id: creds.id, password }
-      });
+      const loginRes = await supertest(app.getHttpServer())
+        .post('/user/login')
+        .send({
+          [QUERY_KEY]: { [TOKEN_KEY]: true },
+          [DTO_KEY]: { id: creds.id, password },
+        });
 
       expect(loginRes.statusCode).toBe(HttpStatus.UNAUTHORIZED);
     });

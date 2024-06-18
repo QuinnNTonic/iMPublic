@@ -14,14 +14,9 @@ import {
   DTO_KEY,
   QUERY_KEY,
   TOKEN_KEY,
-  IQuery
+  IQuery,
 } from '@involvemint/shared/domain';
-import { 
-  Controller,
-  Post,
-  Body,
-  Headers
-} from '@nestjs/common';
+import { Controller, Post, Body, Headers } from '@nestjs/common';
 import { QueryValidationPipe, ValidationPipe } from '../pipes';
 
 @Controller(InvolvemintRoutes.voucher)
@@ -30,8 +25,8 @@ export class VoucherController {
 
   @Post('getForProfile')
   async getForProfile(
-    @Body(QUERY_KEY, new QueryValidationPipe(VoucherQuery)) query: IQuery<Voucher[]>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(VoucherQuery)) query: IQuery<Voucher[]>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: GetVouchersForProfileDto
   ) {
     return this.voucher.getForProfile(query, token, dto);
@@ -39,8 +34,8 @@ export class VoucherController {
 
   @Post('getBySeller')
   async getBySeller(
-    @Body(QUERY_KEY, new QueryValidationPipe(EpVoucherQuery)) query: IQuery<Voucher[]>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EpVoucherQuery)) query: IQuery<Voucher[]>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: GetVouchersBySellerDto
   ) {
     return this.voucher.getBySeller(query, token, dto);
@@ -48,8 +43,8 @@ export class VoucherController {
 
   @Post('buy')
   async buy(
-    @Body(QUERY_KEY, new QueryValidationPipe(VoucherQuery)) query: IQuery<Voucher>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(VoucherQuery)) query: IQuery<Voucher>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: BuyVoucherDto
   ) {
     return this.voucher.buy(query, token, dto);
@@ -57,8 +52,8 @@ export class VoucherController {
 
   @Post('redeemVoucher')
   async redeemVoucher(
-    @Body(QUERY_KEY, new QueryValidationPipe(EpVoucherQuery)) query: IQuery<Voucher>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EpVoucherQuery)) query: IQuery<Voucher>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: RedeemVoucherDto
   ) {
     return this.voucher.redeemVoucher(query, token, dto);
@@ -66,8 +61,8 @@ export class VoucherController {
 
   @Post('refundVoucher')
   async refundVoucher(
-    @Body(QUERY_KEY, new QueryValidationPipe(EpVoucherQuery)) query: IQuery<Voucher>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EpVoucherQuery)) query: IQuery<Voucher>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: RefundVoucherDto
   ) {
     return this.voucher.refundVoucher(query, token, dto);
@@ -75,8 +70,8 @@ export class VoucherController {
 
   @Post('archiveVoucher')
   async archiveVoucher(
-    @Body(QUERY_KEY, new QueryValidationPipe(EpVoucherQuery)) query: IQuery<Voucher>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EpVoucherQuery)) query: IQuery<Voucher>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: ArchiveVoucherDto
   ) {
     return this.voucher.archiveVoucher(query, token, dto);
@@ -84,8 +79,8 @@ export class VoucherController {
 
   @Post('unarchiveVoucher')
   async unarchiveVoucher(
-    @Body(QUERY_KEY, new QueryValidationPipe(EpVoucherQuery)) query: IQuery<Voucher>, 
-    @Headers(TOKEN_KEY) token: string, 
+    @Body(QUERY_KEY, new QueryValidationPipe(EpVoucherQuery)) query: IQuery<Voucher>,
+    @Headers(TOKEN_KEY) token: string,
     @Body(DTO_KEY, new ValidationPipe()) dto: UnarchiveVoucherDto
   ) {
     return this.voucher.unarchiveVoucher(query, token, dto);

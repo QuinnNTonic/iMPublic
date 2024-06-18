@@ -1,10 +1,10 @@
 import { HandleRepository } from '@involvemint/server/core/domain-services';
-import { 
-  GenericHandleSearchDto, 
-  Handle, 
-  SearchHandleDto, 
+import {
+  GenericHandleSearchDto,
+  Handle,
+  SearchHandleDto,
   ViewProfileDto,
-  IQuery 
+  IQuery,
 } from '@involvemint/shared/domain';
 import { Injectable } from '@nestjs/common';
 import { Raw } from 'typeorm';

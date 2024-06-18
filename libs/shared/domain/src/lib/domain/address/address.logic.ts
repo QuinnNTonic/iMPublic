@@ -26,26 +26,24 @@ export const formatImPublicAddress = createLogic<
   }
 >()(({ city, state }) => `${city ?? ''}, ${state ?? ''}`);
 
-export function getDefaultAddress(): 
-  {
-    id: string;
-    address1: string;
-    address2: string | undefined;
-    city: string;
-    state: string;
-    zip: string;
-  }
-  {
-    const defaultAddress = environment.defaultLocalAddress[0];
+export function getDefaultAddress(): {
+  id: string;
+  address1: string;
+  address2: string | undefined;
+  city: string;
+  state: string;
+  zip: string;
+} {
+  const defaultAddress = environment.defaultLocalAddress[0];
 
-    const address = {
-        id: uuid.v4(),
-        address1: `${defaultAddress.streetNumber} ${defaultAddress.streetName}`,
-        address2: undefined,
-        city: defaultAddress.city ?? '',
-        state: defaultAddress.administrativeLevels?.level1long ?? 'PA',
-        zip: defaultAddress.zipcode ?? '',
-      };
+  const address = {
+    id: uuid.v4(),
+    address1: `${defaultAddress.streetNumber} ${defaultAddress.streetName}`,
+    address2: undefined,
+    city: defaultAddress.city ?? '',
+    state: defaultAddress.administrativeLevels?.level1long ?? 'PA',
+    zip: defaultAddress.zipcode ?? '',
+  };
 
-    return address;
-  }
+  return address;
+}

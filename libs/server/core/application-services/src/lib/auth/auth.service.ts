@@ -1,16 +1,9 @@
 import {
   ExchangePartnerRepository,
   HandleRepository,
-  UserRepository
+  UserRepository,
 } from '@involvemint/server/core/domain-services';
-import { 
-  environment, 
-  ImConfig, 
-  User,
-  IExactQuery, 
-  IParser, 
-  IQuery  
-} from '@involvemint/shared/domain';
+import { environment, ImConfig, User, IExactQuery, IParser, IQuery } from '@involvemint/shared/domain';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { FirebaseScrypt } from 'firebase-scrypt';
@@ -117,7 +110,7 @@ export class AuthService {
     }
 
     const user = await this.userRepo.findOneOrFail(sign.userId);
-    if (!user.active && (environment.environment !== 'local')) {
+    if (!user.active && environment.environment !== 'local') {
       throw new HttpException(`Email "${user.id}" has not been verified.`, HttpStatus.UNAUTHORIZED);
     }
 
@@ -158,7 +151,7 @@ export class AuthService {
       throw new HttpException(`You do not own this profile.`, HttpStatus.UNAUTHORIZED);
     }
 
-    if (!user.active && (environment.environment !== 'local')) {
+    if (!user.active && environment.environment !== 'local') {
       throw new HttpException(`Your email has not been verified.`, HttpStatus.UNAUTHORIZED);
     }
 

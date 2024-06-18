@@ -166,7 +166,7 @@
               <input
                 formControlName="startDate"
                 type="date"
-                value="{{ projectForm.value.startDate | date: 'yyyy-MM-dd' }}"
+                value="{{ projectForm.value.startDate | date : 'yyyy-MM-dd' }}"
               />
               <im-error *ngIf="!projectForm.controls.startDate.valid">
                 Please enter Project Start Date.
@@ -181,7 +181,7 @@
               <input
                 formControlName="endDate"
                 type="date"
-                value="{{ projectForm.value.endDate | date: 'yyyy-MM-dd' }}"
+                value="{{ projectForm.value.endDate | date : 'yyyy-MM-dd' }}"
               />
               <im-error *ngIf="!projectForm.controls.endDate.valid">
                 End date must come after start date.
@@ -214,7 +214,7 @@
                 <iframe
                   *ngIf="state.project.customWaiverFilePath as url"
                   body
-                  [src]="url | imStorageUrl: true | async"
+                  [src]="url | imStorageUrl : true | async"
                   width="100%"
                   height="100%"
                   frameborder="no"
@@ -314,7 +314,7 @@
           <div
             *ngFor="
               let enrollment of state.enrollments
-                | paginate: { itemsPerPage: 10, currentPage: enrollmentsPage, id: 'enrollments' }
+                | paginate : { itemsPerPage: 10, currentPage: enrollmentsPage, id: 'enrollments' }
             "
           >
             <im-block [join]="true">
@@ -384,23 +384,23 @@
               <div body class="im-time-blocks">
                 <div>
                   <b [style.color]="'var(--im-enrollment-applied)'">Applied:&nbsp;</b>
-                  <div>{{ enrollment.dateApplied | date: 'MMMM d, y, h:mm:ss a' }}</div>
+                  <div>{{ enrollment.dateApplied | date : 'MMMM d, y, h:mm:ss a' }}</div>
                 </div>
                 <div *ngIf="enrollment.dateSubmitted">
                   <b [style.color]="'var(--im-enrollment-submitted)'">Submitted:&nbsp;</b>
-                  <div>{{ enrollment.dateSubmitted | date: 'MMMM d, y, h:mm:ss a' }}</div>
+                  <div>{{ enrollment.dateSubmitted | date : 'MMMM d, y, h:mm:ss a' }}</div>
                 </div>
                 <div *ngIf="enrollment.dateApproved">
                   <b [style.color]="'var(--im-enrollment-approved)'">Approved:&nbsp;</b>
-                  <div>{{ enrollment.dateApproved | date: 'MMMM d, y, h:mm:ss a' }}</div>
+                  <div>{{ enrollment.dateApproved | date : 'MMMM d, y, h:mm:ss a' }}</div>
                 </div>
                 <div *ngIf="enrollment.dateDenied">
                   <b [style.color]="'var(--im-enrollment-denied)'">Denied:&nbsp;</b>
-                  <div>{{ enrollment.dateDenied | date: 'MMMM d, y, h:mm:ss a' }}</div>
+                  <div>{{ enrollment.dateDenied | date : 'MMMM d, y, h:mm:ss a' }}</div>
                 </div>
                 <div *ngIf="enrollment.dateRetired">
                   <b [style.color]="'var(--im-enrollment-retired)'">Retired:&nbsp;</b>
-                  <div>{{ enrollment.dateRetired | date: 'MMMM d, y, h:mm:ss a' }}</div>
+                  <div>{{ enrollment.dateRetired | date : 'MMMM d, y, h:mm:ss a' }}</div>
                 </div>
               </div>
             </im-block>
@@ -471,7 +471,7 @@
             No Proofs of Impact for this project.
           </div>
           <div
-            *ngFor="let poi of state.pois | paginate: { itemsPerPage: 10, currentPage: poiPage, id: 'poi' }"
+            *ngFor="let poi of state.pois | paginate : { itemsPerPage: 10, currentPage: poiPage, id: 'poi' }"
           >
             <im-block [join]="true">
               <div header [ngSwitch]="poi.status">
@@ -507,7 +507,7 @@
             <im-block [join]="true" *ngIf="poi.status >= PoiStatus.stopped">
               <div header class="im-primary-text">Credit Info</div>
               <div body>
-                Credits Earned: {{ calculateCreditsEarnedForPoi(poi) / 100 | currency: '':'' }}
+                Credits Earned: {{ calculateCreditsEarnedForPoi(poi) / 100 | currency : '' : '' }}
                 <ion-icon src="/assets/icons/cc.svg"></ion-icon>
               </div>
             </im-block>
@@ -544,29 +544,29 @@
                 </div> -->
                 <div *ngIf="poi.dateStarted">
                   <b [style.color]="'var(--im-poi-started)'">Started:&nbsp;</b>
-                  <div>{{ poi.dateStarted | date: 'MMMM d, y, h:mm:ss a' }}</div>
+                  <div>{{ poi.dateStarted | date : 'MMMM d, y, h:mm:ss a' }}</div>
                 </div>
                 <div *ngFor="let t of getPausedResumedTimes(poi)">
                   <b [style.color]="t.type === 'resumed' ? 'var(--im-poi-started)' : 'var(--im-poi-paused)'">
                     <span>{{ t.type | titlecase }}:&nbsp;</span>
                   </b>
-                  <div>{{ t.date | date: 'MMMM d, y, h:mm:ss a' }}</div>
+                  <div>{{ t.date | date : 'MMMM d, y, h:mm:ss a' }}</div>
                 </div>
                 <div *ngIf="poi.dateStopped">
                   <b [style.color]="'var(--im-poi-stopped)'">Stopped:&nbsp;</b>
-                  <div>{{ poi.dateStopped | date: 'MMMM d, y, h:mm:ss a' }}</div>
+                  <div>{{ poi.dateStopped | date : 'MMMM d, y, h:mm:ss a' }}</div>
                 </div>
                 <div *ngIf="poi.dateSubmitted">
                   <b [style.color]="'var(--im-poi-submitted)'">Submitted:&nbsp;</b>
-                  <div>{{ poi.dateSubmitted | date: 'MMMM d, y, h:mm:ss a' }}</div>
+                  <div>{{ poi.dateSubmitted | date : 'MMMM d, y, h:mm:ss a' }}</div>
                 </div>
                 <div *ngIf="poi.dateApproved">
                   <b [style.color]="'var(--im-poi-approved)'">Approved:&nbsp;</b>
-                  <div>{{ poi.dateApproved | date: 'MMMM d, y, h:mm:ss a' }}</div>
+                  <div>{{ poi.dateApproved | date : 'MMMM d, y, h:mm:ss a' }}</div>
                 </div>
                 <div *ngIf="poi.dateDenied">
                   <b [style.color]="'var(--im-poi-denied)'">Denied:&nbsp;</b>
-                  <div>{{ poi.dateDenied | date: 'MMMM d, y, h:mm:ss a' }}</div>
+                  <div>{{ poi.dateDenied | date : 'MMMM d, y, h:mm:ss a' }}</div>
                 </div>
               </div>
             </im-block>

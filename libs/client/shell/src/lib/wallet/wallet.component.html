@@ -24,7 +24,7 @@
           <div class="im-primary-text title">Balance</div>
           <div class="current-balance" *ngIf="state.creditsLoaded">
             <div class="cur-balance-number-cont">
-              <div class="cur-balance-number">{{ state.balance | currency: '':'' }}</div>
+              <div class="cur-balance-number">{{ state.balance | currency : '' : '' }}</div>
               <ion-icon src="/assets/icons/cc.svg" class="cur-balance-icon"></ion-icon>
               <div class="float-shadow text"></div>
               <div class="float-shadow icon"></div>
@@ -35,7 +35,7 @@
             <span class="escrow">
               <span #connectedTo>
                 Credits in Escrow:
-                <b>{{ state.escrowBalance | currency: '':'' }}</b>
+                <b>{{ state.escrowBalance | currency : '' : '' }}</b>
               </span>
               <ion-icon src="/assets/icons/cc.svg"></ion-icon>
               &nbsp;
@@ -73,7 +73,7 @@
                   }}
                 </b>
                 <span *ngIf="t.epAudibleCode" class="code">{{ t.epAudibleCode }}</span>
-                <span class="date">{{ t.dateTransacted | date: 'M/dd/yy' }}</span>
+                <span class="date">{{ t.dateTransacted | date : 'M/dd/yy' }}</span>
                 <div>
                   <b
                     [style.color]="
@@ -83,7 +83,7 @@
                     "
                   >
                     {{ state.activeProfile?.handle?.id === t.meta.senderHandle ? '&ndash;' : '+' }}
-                    {{ t.amount / 100 | currency: '':'' }}
+                    {{ t.amount / 100 | currency : '' : '' }}
                     <ion-icon src="/assets/icons/cc.svg"></ion-icon>
                   </b>
                 </div>
@@ -124,13 +124,13 @@
                     "
                   >
                     {{ state.activeProfile?.handle?.id === t.meta.senderHandle ? '&ndash;' : '+' }}
-                    {{ t.amount / 100 | currency: '':'' }}
+                    {{ t.amount / 100 | currency : '' : '' }}
                     <ion-icon src="/assets/icons/cc.svg"></ion-icon>
                   </b>
-                  <span>({{ getRunningTotal(state, i) | currency: '':'' }})</span>
+                  <span>({{ getRunningTotal(state, i) | currency : '' : '' }})</span>
                 </div>
                 <div class="im-ellipsis memo">{{ t.memo }}&nbsp;</div>
-                <div class="date">{{ t.dateTransacted | date: 'M/dd/yy' }}</div>
+                <div class="date">{{ t.dateTransacted | date : 'M/dd/yy' }}</div>
               </div>
             </div>
           </div>
@@ -164,7 +164,7 @@
               Balance Leftover:
               <ion-spinner *ngIf="!state.creditsLoaded" class="spin-loader" name="crescent"></ion-spinner>
               <span *ngIf="state.creditsLoaded" [style.font-weight]="'700'">
-                {{ state.balance - amount.value | currency: '':'' }}
+                {{ state.balance - amount.value | currency : '' : '' }}
               </span>
               <ion-icon
                 *ngIf="state.creditsLoaded"

@@ -21,59 +21,41 @@ const initialState: PassportState = {
 
 export const PassportReducer = createReducer(
   initialState,
-  on(
-    PassportActions.refreshPassport,
-    (state): PassportState => {
-      return {
-        ...state,
-        loaded: false,
-      };
-    }
-  ),
-  on(
-    PassportActions.loadPassportSuccess,
-    (state, { documents }): PassportState => {
-      return {
-        ...state,
-        documents: documentsAdapter.upsertMany(documents, state.documents),
-        loaded: true,
-      };
-    }
-  ),
-  on(
-    PassportActions.createPassportDocumentSuccess,
-    (state, { document }): PassportState => {
-      return {
-        ...state,
-        documents: documentsAdapter.upsertOne(document, state.documents),
-      };
-    }
-  ),
-  on(
-    PassportActions.editPassportDocumentSuccess,
-    (state, { document }): PassportState => {
-      return {
-        ...state,
-        documents: documentsAdapter.upsertOne(document, state.documents),
-      };
-    }
-  ),
-  on(
-    PassportActions.replacePassportDocumentSuccess,
-    (state, { document }): PassportState => {
-      return {
-        ...state,
-        documents: documentsAdapter.upsertOne(document, state.documents),
-      };
-    }
-  ),
-  on(
-    PassportActions.deletePassportDocumentSuccess,
-    (state, { deletedId }): PassportState => {
-      return {
-        ...state,
-        documents: documentsAdapter.removeOne(deletedId, state.documents),
-      };
-    }
-  )
+  on(PassportActions.refreshPassport, (state): PassportState => {
+    return {
+      ...state,
+      loaded: false,
+    };
+  }),
+  on(PassportActions.loadPassportSuccess, (state, { documents }): PassportState => {
+    return {
+      ...state,
+      documents: documentsAdapter.upsertMany(documents, state.documents),
+      loaded: true,
+    };
+  }),
+  on(PassportActions.createPassportDocumentSuccess, (state, { document }): PassportState => {
+    return {
+      ...state,
+      documents: documentsAdapter.upsertOne(document, state.documents),
+    };
+  }),
+  on(PassportActions.editPassportDocumentSuccess, (state, { document }): PassportState => {
+    return {
+      ...state,
+      documents: documentsAdapter.upsertOne(document, state.documents),
+    };
+  }),
+  on(PassportActions.replacePassportDocumentSuccess, (state, { document }): PassportState => {
+    return {
+      ...state,
+      documents: documentsAdapter.upsertOne(document, state.documents),
+    };
+  }),
+  on(PassportActions.deletePassportDocumentSuccess, (state, { deletedId }): PassportState => {
+    return {
+      ...state,
+      documents: documentsAdapter.removeOne(deletedId, state.documents),
+    };
+  })
 );

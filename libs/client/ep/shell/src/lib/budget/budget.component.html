@@ -45,11 +45,11 @@
               <div class="dates">
                 <div class="date">
                   <span class="pop-text">Start Date:</span>
-                  <span>{{ subOneMonth(state.profile!.budgetEndDate) | date: 'M/dd/yy' }}</span>
+                  <span>{{ subOneMonth(state.profile!.budgetEndDate) | date : 'M/dd/yy' }}</span>
                 </div>
                 <div class="date end-date">
                   <span class="pop-text">End Date:</span>
-                  <span>{{ state.profile!.budgetEndDate | date: 'M/dd/yy' }}</span>
+                  <span>{{ state.profile!.budgetEndDate | date : 'M/dd/yy' }}</span>
                 </div>
               </div>
 
@@ -104,7 +104,7 @@
                   <div class="pop-text">Received</div>
                   <div class="amount">
                     <span>
-                      {{ state.profile!.view.receivedThisMonth / 100 | currency: '':'' }}
+                      {{ state.profile!.view.receivedThisMonth / 100 | currency : '' : '' }}
                     </span>
                     <ion-icon src="/assets/icons/cc.svg"></ion-icon>
                   </div>
@@ -119,7 +119,7 @@
                     <span>
                       {{
                         (state.profile!.budget - state.profile!.view.receivedThisMonth) / 100
-                          | currency: '':''
+                          | currency : '' : ''
                       }}
                     </span>
                     <ion-icon src="/assets/icons/cc.svg"></ion-icon>
@@ -132,7 +132,7 @@
                     <ion-icon src="/assets/icons/cc.svg"></ion-icon>
                   </div>
                   <div class="amount" *ngIf="profile!.budget as budget">
-                    <span>{{ budget / 100 | currency: '':'' }}</span>
+                    <span>{{ budget / 100 | currency : '' : '' }}</span>
                     <ion-icon src="/assets/icons/cc.svg"></ion-icon>
                   </div>
                 </div>

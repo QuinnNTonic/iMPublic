@@ -11,14 +11,12 @@ export interface LatLng {
  * @param status StatusService to show loading screen
  */
 export function getPosition(status?: StatusService) {
-  
-  if(environment.environment === 'local')
-  {
+  if (environment.environment === 'local') {
     return new Promise<LatLng>((resolve, _) => {
       resolve({
         lat: 40.444229,
-        lng: -79.943367
-      })
+        lng: -79.943367,
+      });
     });
   }
 

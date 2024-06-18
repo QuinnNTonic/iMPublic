@@ -3,7 +3,15 @@ import {
   ServeAdminRepository,
   ServePartnerRepository,
 } from '@involvemint/server/core/domain-services';
-import { DTO_KEY, IParser, Project, QUERY_KEY, ServePartner, TOKEN_KEY, createQuery } from '@involvemint/shared/domain';
+import {
+  DTO_KEY,
+  IParser,
+  Project,
+  QUERY_KEY,
+  ServePartner,
+  TOKEN_KEY,
+  createQuery,
+} from '@involvemint/shared/domain';
 import { HttpStatus } from '@nestjs/common';
 import { NestFastifyApplication } from '@nestjs/platform-fastify';
 import { Test } from '@nestjs/testing';
@@ -12,7 +20,7 @@ import { AppTestModule } from '../../core/app-test.module';
 import { DatabaseService } from '../../core/database.service';
 import { createServeAdmin } from '../serve-admin/serve-admin.helpers';
 import { createServePartner } from '../serve-partner/serve-partner.helpers';
-import supertest from 'supertest'
+import supertest from 'supertest';
 
 describe('Project Integration Tests', () => {
   let app: NestFastifyApplication;
@@ -61,14 +69,14 @@ describe('Project Integration Tests', () => {
     await createServeAdmin({}, saRepo, creds.id, sp.id);
 
     const projectCreationResult = await supertest(app.getHttpServer())
-    .post('/project/create')
-    .set('token', token)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/json')
-    .send({ 
-      [QUERY_KEY]: projectQuery,
-      [DTO_KEY]: { spId: sp.id }
-    });
+      .post('/project/create')
+      .set('token', token)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .send({
+        [QUERY_KEY]: projectQuery,
+        [DTO_KEY]: { spId: sp.id },
+      });
 
     project = projectCreationResult.body;
   });
@@ -77,47 +85,46 @@ describe('Project Integration Tests', () => {
 
   describe('getAll', () => {
     it('should not get private projects (project is private by default)', async () => {
-
       const { body } = await supertest(app.getHttpServer())
-      .post('/project/getAll')
-      .set('token', token)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({ 
-        [QUERY_KEY]: projectQuery,
-        [DTO_KEY]: {}
-      });
-      
+        .post('/project/getAll')
+        .set('token', token)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: projectQuery,
+          [DTO_KEY]: {},
+        });
+
       expect(body.length).toBe(0);
     });
     it('should not get unlisted projects', async () => {
       await projectRepo.update(project.id, { listingStatus: 'unlisted' });
-      
+
       const { body } = await supertest(app.getHttpServer())
-      .post('/project/getAll')
-      .set('token', token)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({ 
-        [QUERY_KEY]: projectQuery,
-        [DTO_KEY]: {}
-      });
-      
+        .post('/project/getAll')
+        .set('token', token)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: projectQuery,
+          [DTO_KEY]: {},
+        });
+
       expect(body.length).toBe(0);
     });
     it('should get public projects', async () => {
       await projectRepo.update(project.id, { listingStatus: 'public' });
-      
+
       const { body } = await supertest(app.getHttpServer())
-      .post('/project/getAll')
-      .set('token', token)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({ 
-        [QUERY_KEY]: projectQuery,
-        [DTO_KEY]: {}
-      });
-      
+        .post('/project/getAll')
+        .set('token', token)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: projectQuery,
+          [DTO_KEY]: {},
+        });
+
       expect(body[0].id).toBe(project.id);
     });
   });
@@ -125,40 +132,40 @@ describe('Project Integration Tests', () => {
   describe('getOne', () => {
     it('should not get private project (project is private by default)', async () => {
       const result = await supertest(app.getHttpServer())
-      .post('/project/getOne')
-      .set('token', token)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({ 
-        [QUERY_KEY]: projectQuery,
-        [DTO_KEY]: { projectId: project.id }
-      });
+        .post('/project/getOne')
+        .set('token', token)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: projectQuery,
+          [DTO_KEY]: { projectId: project.id },
+        });
       expect(result.statusCode).toBe(HttpStatus.UNAUTHORIZED);
     });
     it('should get unlisted project', async () => {
       await projectRepo.update(project.id, { listingStatus: 'unlisted' });
       const result = await supertest(app.getHttpServer())
-      .post('/project/getOne')
-      .set('token', token)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({ 
-        [QUERY_KEY]: projectQuery,
-        [DTO_KEY]: { projectId: project.id }
-      });
+        .post('/project/getOne')
+        .set('token', token)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: projectQuery,
+          [DTO_KEY]: { projectId: project.id },
+        });
       expect(result.body.id).toBe(project.id);
     });
     it('should get public project', async () => {
       await projectRepo.update(project.id, { listingStatus: 'public' });
       const result = await supertest(app.getHttpServer())
-      .post('/project/getOne')
-      .set('token', token)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({ 
-        [QUERY_KEY]: projectQuery,
-        [DTO_KEY]: { projectId: project.id }
-      });
+        .post('/project/getOne')
+        .set('token', token)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: projectQuery,
+          [DTO_KEY]: { projectId: project.id },
+        });
       expect(result.body.id).toBe(project.id);
     });
   });
@@ -166,14 +173,14 @@ describe('Project Integration Tests', () => {
   describe('getAllOwnedBySp', () => {
     it('should get only projects owned by me', async () => {
       const result = await supertest(app.getHttpServer())
-      .post('/project/getAllOwnedBySp')
-      .set('token', token)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({ 
-        [QUERY_KEY]: projectQuery,
-        [DTO_KEY]: { spId: sp.id }
-      });
+        .post('/project/getAllOwnedBySp')
+        .set('token', token)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: projectQuery,
+          [DTO_KEY]: { spId: sp.id },
+        });
       expect(result.body[0].id).toBe(project.id);
     });
     it('should not get projects not owned by me', async () => {
@@ -208,14 +215,14 @@ describe('Project Integration Tests', () => {
       );
       await projectRepo.update(project.id, { servePartner: newSpId });
       const result = await supertest(app.getHttpServer())
-      .post('/project/getAllOwnedBySp')
-      .set('token', token)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({ 
-        [QUERY_KEY]: projectQuery,
-        [DTO_KEY]: { spId: sp.id }
-      });
+        .post('/project/getAllOwnedBySp')
+        .set('token', token)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: projectQuery,
+          [DTO_KEY]: { spId: sp.id },
+        });
       expect(result.body.length).toBe(0);
     });
   });
@@ -231,14 +238,14 @@ describe('Project Integration Tests', () => {
       expect(await projectRepo.findOne(project.id)).toBeTruthy();
 
       const result = await supertest(app.getHttpServer())
-      .post('/project/delete')
-      .set('token', token)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({ 
-        [QUERY_KEY]: { deletedId: true },
-        [DTO_KEY]: { projectId: project.id }
-      });
+        .post('/project/delete')
+        .set('token', token)
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: { deletedId: true },
+          [DTO_KEY]: { projectId: project.id },
+        });
 
       expect(result.body.deletedId).toBe(project.id);
       expect(await projectRepo.findOne(project.id)).toBeFalsy();

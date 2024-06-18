@@ -11,8 +11,8 @@ import {
   QueryOffersDto,
   UpdateOfferDto,
   UploadOfferImageDto,
-  IQuery, 
-  parseQuery
+  IQuery,
+  parseQuery,
 } from '@involvemint/shared/domain';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import * as uuid from 'uuid';

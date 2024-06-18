@@ -21,32 +21,23 @@ const initialState: VouchersState = {
 
 export const VoucherReducer = createReducer(
   initialState,
-  on(
-    VouchersActions.refreshVouchersForProfile,
-    (state, { profile }): VouchersState => {
-      return {
-        ...state,
-        profileLoaded: state.profileLoaded.filter((p) => p !== profile.id),
-      };
-    }
-  ),
-  on(
-    VouchersActions.loadVouchersForProfileSuccess,
-    (state, { vouchers, profileId }): VouchersState => {
-      return {
-        ...state,
-        vouchers: vouchersAdapter.upsertMany(vouchers, state.vouchers),
-        profileLoaded: [...state.profileLoaded, profileId],
-      };
-    }
-  ),
-  on(
-    VouchersActions.buyVoucherSuccess,
-    (state, { voucher }): VouchersState => {
-      return {
-        ...state,
-        vouchers: vouchersAdapter.upsertOne(voucher, state.vouchers),
-      };
-    }
-  )
+  on(VouchersActions.refreshVouchersForProfile, (state, { profile }): VouchersState => {
+    return {
+      ...state,
+      profileLoaded: state.profileLoaded.filter((p) => p !== profile.id),
+    };
+  }),
+  on(VouchersActions.loadVouchersForProfileSuccess, (state, { vouchers, profileId }): VouchersState => {
+    return {
+      ...state,
+      vouchers: vouchersAdapter.upsertMany(vouchers, state.vouchers),
+      profileLoaded: [...state.profileLoaded, profileId],
+    };
+  }),
+  on(VouchersActions.buyVoucherSuccess, (state, { voucher }): VouchersState => {
+    return {
+      ...state,
+      vouchers: vouchersAdapter.upsertOne(voucher, state.vouchers),
+    };
+  })
 );

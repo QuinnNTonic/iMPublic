@@ -10,7 +10,7 @@ export const environment: Env = {
   appUrl: `http://${host}:4202`,
   storageBucket: 'your storage bucket',
   adminPasswordHash:
-  'ErVaSjCLHM0RIIQE4QZuMmEkOU81/oqTCbTrQNNxXdddVKXp+onDi/C/+PiBg71B8Bdrc7dQbGUtjyK51DUEjQ==', //IM-LocalSuperAdmin1
+    'ErVaSjCLHM0RIIQE4QZuMmEkOU81/oqTCbTrQNNxXdddVKXp+onDi/C/+PiBg71B8Bdrc7dQbGUtjyK51DUEjQ==', //IM-LocalSuperAdmin1
   gcpApiKey: 'insert your key here',
   typeOrmConfig: {
     type: 'postgres',
@@ -47,15 +47,13 @@ export const environment: Env = {
     type: 'service_account',
     project_id: 'project-id',
     private_key_id: 'Your Private Key',
-    private_key:
-      '-----BEGIN PRIVATE KEY-----\nYour Private Key\n-----END PRIVATE KEY-----\n',
+    private_key: '-----BEGIN PRIVATE KEY-----\nYour Private Key\n-----END PRIVATE KEY-----\n',
     client_email: 'Your client email',
     client_id: 'client id',
     auth_uri: 'https://accounts.google.com/o/oauth2/auth',
     token_uri: 'https://oauth2.googleapis.com/token',
     auth_provider_x509_cert_url: 'https://www.googleapis.com/oauth2/v1/certs',
-    client_x509_cert_url:
-      'cert url',
+    client_x509_cert_url: 'cert url',
   },
   // I don't think this is used
   scrypt: {
@@ -64,16 +62,18 @@ export const environment: Env = {
     saltSeparator: 'Bw==',
     signerKey: 'de/PQ/Gy53mgslvUgDUKDCgHJPArYqbFnGILLQZNe5My/CvqIThVL/CsndU8oudZ9lc4B7PT8w3sAar2/luQxA==',
   },
-  defaultLocalAddress: [{
-    streetNumber: '5000',
-    streetName: 'Forbes Ave',
-    formattedAddress: '5000 Forbes Ave, Pittsburgh, PA 15213',
-    city: 'Pittsburgh',
-    administrativeLevels: {
-      level1short: 'PA'
+  defaultLocalAddress: [
+    {
+      streetNumber: '5000',
+      streetName: 'Forbes Ave',
+      formattedAddress: '5000 Forbes Ave, Pittsburgh, PA 15213',
+      city: 'Pittsburgh',
+      administrativeLevels: {
+        level1short: 'PA',
+      },
+      zipcode: '15213',
+      latitude: 40.444229,
+      longitude: -79.943367,
     },
-    zipcode: '15213',
-    latitude: 40.444229,
-    longitude: -79.943367
-  }] 
+  ],
 };

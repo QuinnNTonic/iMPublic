@@ -34,26 +34,26 @@ describe('Handle Integration Tests', () => {
   describe('verifyHandle', () => {
     it('should verify handle is unique', async () => {
       const verifyHandleResult = await supertest(app.getHttpServer())
-      .post('/handle/verifyHandle')
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({
-        [QUERY_KEY]: { isUnique: true },
-        [DTO_KEY]: { handle: 'myHandle' }
-      });
+        .post('/handle/verifyHandle')
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: { isUnique: true },
+          [DTO_KEY]: { handle: 'myHandle' },
+        });
 
       expect(verifyHandleResult.body.isUnique).toBe(true);
     });
     it('should verify handle is not unique', async () => {
       await handleRepo.upsert({ id: 'myHandle' });
       const verifyHandleResult = await supertest(app.getHttpServer())
-      .post('/handle/verifyHandle')
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .send({
-        [QUERY_KEY]: { isUnique: true },
-        [DTO_KEY]: { handle: 'myHandle' }
-      });
+        .post('/handle/verifyHandle')
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .send({
+          [QUERY_KEY]: { isUnique: true },
+          [DTO_KEY]: { handle: 'myHandle' },
+        });
 
       expect(verifyHandleResult.body.isUnique).toBe(false);
     });

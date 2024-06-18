@@ -23,7 +23,8 @@ interface State {
 })
 export class PassportModalComponent
   extends StatefulComponent<State>
-  implements OnInit, PassportModalComponentInputs {
+  implements OnInit, PassportModalComponentInputs
+{
   @ViewChild('fileInp') input!: ElementRef<HTMLInputElement>;
 
   @Input() title = '';

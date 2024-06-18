@@ -11,11 +11,11 @@
   <div class="dates">
     <div>
       <span>Purchased:&nbsp;</span>
-      <span>{{ voucher!.dateCreated | date: 'M/dd/yy' }}</span>
+      <span>{{ voucher!.dateCreated | date : 'M/dd/yy' }}</span>
     </div>
     <div>
       <span>Expires:&nbsp;</span>
-      <span>{{ voucher!.dateExpires | date: 'M/dd/yy' }}</span>
+      <span>{{ voucher!.dateExpires | date : 'M/dd/yy' }}</span>
     </div>
   </div>
   <div>
@@ -71,7 +71,7 @@
           </div>
           <span class="offer-price">
             <span class="im-primary-text" style="color: var(--ion-text-color)">
-              {{ offer.offer.price / 100 | currency: '':'' }}
+              {{ offer.offer.price / 100 | currency : '' : '' }}
             </span>
             <ion-icon class="im-primary-text" src="/assets/icons/cc.svg"></ion-icon>
             <span>&nbsp;x{{ offer.quantity }}</span>
@@ -83,7 +83,7 @@
       <div class="subtitle-text manrope">Amount:</div>
       <div class="credit-cont">
         <div class="tc">
-          <div class="amount manrope">{{ voucher!.amount / 100 | currency: '':'' }}</div>
+          <div class="amount manrope">{{ voucher!.amount / 100 | currency : '' : '' }}</div>
           <ion-icon src="/assets/icons/cc.svg" class="amount"></ion-icon>
         </div>
         <div class="equal-to">

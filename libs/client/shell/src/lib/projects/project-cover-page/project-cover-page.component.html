@@ -33,7 +33,7 @@
           </im-block>
           <im-block [join]="true" icon="/assets/icons/cc-menu.svg">
             <div header class="manrope">Maximum CommunityCredits Earned Per Day</div>
-            <div body>{{ project.creditsEarned / 100 | currency: '':'' }}</div>
+            <div body>{{ project.creditsEarned / 100 | currency : '' : '' }}</div>
           </im-block>
 
           <im-block [join]="true" icon="/assets/icons/proof-of-impact.svg">
@@ -82,9 +82,9 @@
           <im-block [join]="true" icon="/assets/icons/calendar.svg">
             <div header class="manrope">Start {{ project.endDate ? '& End' : '' }} Date</div>
             <div body>
-              {{ project.startDate | date: 'MMMM d, y' }}
+              {{ project.startDate | date : 'MMMM d, y' }}
               {{ project.endDate ? '-' : '' }}
-              {{ project.endDate | date: 'MMMM d, y' }}
+              {{ project.endDate | date : 'MMMM d, y' }}
             </div>
           </im-block>
 

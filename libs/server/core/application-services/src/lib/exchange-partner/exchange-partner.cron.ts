@@ -4,7 +4,7 @@ import {
   ExchangePartner,
   FrontendRoutes,
   FRONTEND_ROUTES_TOKEN,
-  IParser
+  IParser,
 } from '@involvemint/shared/domain';
 import { parseDate } from '@involvemint/shared/util';
 import { Inject, Injectable } from '@nestjs/common';

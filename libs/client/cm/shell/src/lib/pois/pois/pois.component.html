@@ -48,7 +48,7 @@
           </div>
           <div class="timeline-detail-item">
             <ion-icon name="calendar"></ion-icon>
-            <span *ngIf="poi.dateSubmitted">{{ poi.dateSubmitted | date: 'longDate' }}</span>
+            <span *ngIf="poi.dateSubmitted">{{ poi.dateSubmitted | date : 'longDate' }}</span>
             <div *ngIf="!poi.dateSubmitted">No submission date.</div>
           </div>
           <div class="timeline-detail-item">

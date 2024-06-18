@@ -1,11 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import {
-  HandleRestClient,
-  UserFacade,
-  verifyHandleUniqueness,
-} from '@involvemint/client/shared/data-access';
+import { HandleRestClient, UserFacade, verifyHandleUniqueness } from '@involvemint/client/shared/data-access';
 import { StatefulComponent } from '@involvemint/client/shared/util';
 import { CmOnboardingState, ImConfig } from '@involvemint/shared/domain';
 import { DeepReadonly, STATES } from '@involvemint/shared/util';

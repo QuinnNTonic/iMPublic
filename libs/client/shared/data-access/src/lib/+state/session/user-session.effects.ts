@@ -16,7 +16,12 @@ import { ImInitLoaderService } from '../../im-init-loader/im-init-loader.service
 import { ChangeMakerRestClient } from '../../rest-clients/change-maker.rest-client';
 import * as UserSessionActions from './user-session.actions';
 import { ImAuthTokenStorage } from './user-session.storage';
-import { EpApplicationRestClient, ExchangeAdminRestClient, SpApplicationRestClient, UserRestClient } from '../../rest-clients';
+import {
+  EpApplicationRestClient,
+  ExchangeAdminRestClient,
+  SpApplicationRestClient,
+  UserRestClient,
+} from '../../rest-clients';
 
 @Injectable()
 export class UserSessionEffects {

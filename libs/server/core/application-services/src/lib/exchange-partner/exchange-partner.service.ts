@@ -12,7 +12,7 @@ import {
   SearchEpDto,
   UpdateEpLogoFileDto,
   UploadEpImagesDto,
-  IQuery
+  IQuery,
 } from '@involvemint/shared/domain';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import * as geocoder from 'node-geocoder';
@@ -79,15 +79,11 @@ export class ExchangePartnerService {
     }
 
     if (dto.changes.address) {
-
       let res: geocoder.Entry[];
 
-      if(environment.environment === 'local')
-      {
+      if (environment.environment === 'local') {
         res = environment.defaultLocalAddress;
-      }
-      else
-      {
+      } else {
         const geo = geocoder.default({ provider: 'google', apiKey: environment.gcpApiKey });
         res = await geo.geocode(Object.entries(dto.changes.address).join(' '));
       }

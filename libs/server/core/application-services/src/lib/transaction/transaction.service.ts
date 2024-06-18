@@ -19,7 +19,7 @@ import {
   TransactionDto,
   createQuery,
   IParser,
-  IQuery
+  IQuery,
 } from '@involvemint/shared/domain';
 import { guaranteeSixCharUidUniqueness, isDecimal, parseDate, UnArray } from '@involvemint/shared/util';
 import { BadRequestException, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';

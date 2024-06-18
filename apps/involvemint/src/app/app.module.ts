@@ -58,16 +58,17 @@ const ngrxDebugFactory = <T>() => {
       },
     ]),
     StoreModule.forRoot([], {
-      runtimeChecks: environment.environment === 'production'
-        ? {}
-        : {
-            strictStateImmutability: true,
-            strictActionImmutability: true,
-            strictStateSerializability: false, // To pass functions.
-            strictActionSerializability: false, // To pass error Objects.
-            strictActionWithinNgZone: true,
-            strictActionTypeUniqueness: true,
-          },
+      runtimeChecks:
+        environment.environment === 'production'
+          ? {}
+          : {
+              strictStateImmutability: true,
+              strictActionImmutability: true,
+              strictStateSerializability: false, // To pass functions.
+              strictActionSerializability: false, // To pass error Objects.
+              strictActionWithinNgZone: true,
+              strictActionTypeUniqueness: true,
+            },
     }),
     StoreDevtoolsModule.instrument({
       name: 'INVOLVEMINT',
@@ -105,12 +106,12 @@ const ngrxDebugFactory = <T>() => {
           provide: USER_PROVIDED_META_REDUCERS,
           useFactory: () => [ngrxDebugFactory()],
         },
-    environment.environment !== 'local' ?
-        []:
-        {
+    environment.environment !== 'local'
+      ? []
+      : {
           provide: USE_FIRESTORE_EMULATOR,
-          useValue: ['localhost', 8080]
-        }
+          useValue: ['localhost', 8080],
+        },
   ],
   bootstrap: [AppComponent],
 })

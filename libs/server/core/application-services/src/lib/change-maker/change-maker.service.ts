@@ -5,7 +5,7 @@ import {
   EditCmProfileDto,
   generateChangeMakerProfileImageFilePath,
   ImStorageFileRoots,
-  IQuery
+  IQuery,
 } from '@involvemint/shared/domain';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import * as uuid from 'uuid';

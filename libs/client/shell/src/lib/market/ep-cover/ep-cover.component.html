@@ -42,7 +42,7 @@
               <div class="b-item">
                 <b>Budget Left:</b>
                 <div class="cash">
-                  {{ (ep.budget - ep.view.receivedThisMonth) / 100 | currency: '':'' }}
+                  {{ (ep.budget - ep.view.receivedThisMonth) / 100 | currency : '' : '' }}
                   <ion-icon src="/assets/icons/cc.svg"></ion-icon>
                 </div>
               </div>
@@ -90,7 +90,7 @@
                   >
                     <span>{{ offer.name }}</span>
                     <div class="chip-price">
-                      <div>{{ offer.price / 100 | currency: '':'' }}&nbsp;</div>
+                      <div>{{ offer.price / 100 | currency : '' : '' }}&nbsp;</div>
                       <ion-icon src="/assets/icons/cc.svg"></ion-icon>
                     </div>
                   </ion-chip>
@@ -142,7 +142,7 @@
               "
               (click)="buyVoucher(ep)"
             >
-              Buy Offers: {{ state.total / 100 | currency: '':'' }}&nbsp;
+              Buy Offers: {{ state.total / 100 | currency : '' : '' }}&nbsp;
               <ion-icon src="/assets/icons/cc.svg"></ion-icon>
             </ion-button>
             <ion-button *ngIf="!state.authenticated">Login to Buy Offers</ion-button>

@@ -13,12 +13,7 @@ import {
   DTO_KEY,
   QUERY_KEY,
 } from '@involvemint/shared/domain';
-import { 
-  Controller,
-  Post,
-  Body,
-  Headers
-} from '@nestjs/common';
+import { Controller, Post, Body, Headers } from '@nestjs/common';
 import { QueryValidationPipe, ValidationPipe } from '../pipes';
 
 @Controller(InvolvemintRoutes.epAdmin)

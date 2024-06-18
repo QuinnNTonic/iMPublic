@@ -1,6 +1,6 @@
 <div *ngIf="state$ | async as state" class="cont {{ color }}">
   <div class="sending">
-    <span>{{ state.amount / 100 | currency: '':'' }}</span>
+    <span>{{ state.amount / 100 | currency : '' : '' }}</span>
     <ion-icon src="/assets/icons/cc.svg"></ion-icon>
   </div>
   <div class="equiv">
@@ -8,11 +8,11 @@
   </div>
   <div class="total">
     <div class="balance" *ngIf="state.mode === 'transaction'">
-      <span>Remaining balance: {{ state.afterAmount / 100 | currency: '':'' }}</span>
+      <span>Remaining balance: {{ state.afterAmount / 100 | currency : '' : '' }}</span>
       <ion-icon src="/assets/icons/cc.svg"></ion-icon>
     </div>
     <div class="balance" *ngIf="state.mode === 'pricePicker'">
-      <span>Maximum Amount: {{ maxCreditTransactionAmount / 100 | currency: '':'' }}</span>
+      <span>Maximum Amount: {{ maxCreditTransactionAmount / 100 | currency : '' : '' }}</span>
       <ion-icon src="/assets/icons/cc.svg"></ion-icon>
     </div>
   </div>
