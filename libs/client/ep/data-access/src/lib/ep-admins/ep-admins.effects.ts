@@ -3,7 +3,7 @@ import { ExchangeAdminRestClient, UserFacade } from '@involvemint/client/shared/
 import { StatusService } from '@involvemint/client/shared/util';
 import { EpAdminQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch } from '@nx/angular';
+import { fetch } from '@ngrx/router-store/data-persistence';
 import { from } from 'rxjs';
 import { delayWhen, filter, map, switchMap, take, tap } from 'rxjs/operators';
 import * as EpAdminsActions from './ep-admins.actions';

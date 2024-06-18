@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StatusService } from '@involvemint/client/shared/util';
 import { VoucherQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch } from '@nx/angular';
+import { fetch } from '@ngrx/router-store/data-persistence';
 import { EMPTY, from } from 'rxjs';
 import { delayWhen, filter, map, switchMap, tap } from 'rxjs/operators';
 import { ImProfileSelectModalService } from '../../modals/im-profile-select-modal/im-profile-select-modal.service';

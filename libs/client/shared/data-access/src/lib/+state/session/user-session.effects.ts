@@ -9,7 +9,7 @@ import {
   UserQuery,
 } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch, pessimisticUpdate } from '@nx/angular';
+import { fetch, pessimisticUpdate } from '@ngrx/router-store/data-persistence';
 import { from, of } from 'rxjs';
 import { delayWhen, filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { ImInitLoaderService } from '../../im-init-loader/im-init-loader.service';

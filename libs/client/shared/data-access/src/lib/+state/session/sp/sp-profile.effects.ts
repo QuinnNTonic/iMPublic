@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { StatusService } from '@involvemint/client/shared/util';
 import { ImConfig, UserQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { pessimisticUpdate } from '@nx/angular';
+import { pessimisticUpdate } from '@ngrx/router-store/data-persistence';
 import { from } from 'rxjs';
 import { delayWhen, filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { UserFacade } from '../../user.facade';

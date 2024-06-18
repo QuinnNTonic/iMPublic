@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StatusService } from '@involvemint/client/shared/util';
 import { ProjectFeedQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch } from '@nx/angular';
+import { fetch } from '@ngrx/router-store/data-persistence';
 import { map } from 'rxjs/operators';
 import * as ProjectActions from './projects.actions';
 import { ProjectRestClient } from '../../rest-clients';

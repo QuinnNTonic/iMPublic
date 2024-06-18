@@ -5,7 +5,7 @@ import { RouteService } from '@involvemint/client/shared/routes';
 import { StatusService } from '@involvemint/client/shared/util';
 import { ProjectSpQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch, pessimisticUpdate } from '@nx/angular';
+import { fetch, pessimisticUpdate } from '@ngrx/router-store/data-persistence';
 import { from } from 'rxjs';
 import { delayWhen, filter, map, switchMap, take, tap } from 'rxjs/operators';
 import * as SpProjectsActions from './projects.actions';

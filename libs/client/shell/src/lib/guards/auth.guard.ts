@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanLoad } from '@angular/router';
+
 import { UserFacade } from '@involvemint/client/shared/data-access';
 import { RouteService } from '@involvemint/client/shared/routes';
 import { Observable } from 'rxjs';
@@ -7,7 +7,7 @@ import { map, switchMap, take } from 'rxjs/operators';
 import { ImAppGuard } from './im-app.guard';
 
 @Injectable()
-export class AuthGuard implements CanLoad, CanActivate {
+export class AuthGuard  {
   constructor(
     private readonly uf: UserFacade,
     private readonly imGuard: ImAppGuard,

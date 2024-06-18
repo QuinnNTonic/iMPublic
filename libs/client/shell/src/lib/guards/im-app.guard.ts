@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+
 import { UserFacade } from '@involvemint/client/shared/data-access';
 import { RouteService } from '@involvemint/client/shared/routes';
 import { IM_ACTIVE_PROFILE_QUERY_PARAM } from '@involvemint/shared/domain';
@@ -13,7 +13,7 @@ import { delay, filter, mapTo, startWith, take, tap } from 'rxjs/operators';
 let loaded = false;
 
 @Injectable()
-export class ImAppGuard implements CanActivate {
+export class ImAppGuard  {
   constructor(
     private readonly user: UserFacade,
     private readonly location: Location,

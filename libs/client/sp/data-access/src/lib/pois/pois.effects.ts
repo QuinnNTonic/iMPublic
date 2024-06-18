@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StatusService } from '@involvemint/client/shared/util';
 import { calculateCreditsEarnedForPoi, PoiSpQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch, pessimisticUpdate } from '@nx/angular';
+import { fetch, pessimisticUpdate } from '@ngrx/router-store/data-persistence';
 import { from } from 'rxjs';
 import { delayWhen, filter, map, switchMap, tap } from 'rxjs/operators';
 import * as PoisActions from './pois.actions';

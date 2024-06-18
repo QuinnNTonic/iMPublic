@@ -3,7 +3,7 @@ import { UserFacade, VoucherRestClient } from '@involvemint/client/shared/data-a
 import { InfoModalService, StatusService } from '@involvemint/client/shared/util';
 import { EpVoucherQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch, pessimisticUpdate } from '@nx/angular';
+import { fetch, pessimisticUpdate } from '@ngrx/router-store/data-persistence';
 import { from } from 'rxjs';
 import { delayWhen, filter, map, switchMap, take, tap } from 'rxjs/operators';
 import * as EpVouchersActions from './ep-vouchers.actions';

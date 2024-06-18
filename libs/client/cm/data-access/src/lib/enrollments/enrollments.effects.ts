@@ -4,7 +4,7 @@ import { RouteService } from '@involvemint/client/shared/routes';
 import { InfoModalService, StatusService } from '@involvemint/client/shared/util';
 import { EnrollmentsQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch, pessimisticUpdate } from '@nx/angular';
+import { fetch, pessimisticUpdate } from '@ngrx/router-store/data-persistence';
 import { from, of } from 'rxjs';
 import { delayWhen, filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { ChangeMakerFacade } from '../change-maker.facade';
