@@ -7,7 +7,7 @@ import {
   Output,
   SkipSelf,
 } from '@angular/core';
-import { ControlContainer, FormControl } from '@angular/forms';
+import { ControlContainer, UntypedFormControl } from '@angular/forms';
 
 export interface ImCheckBoxCheckEvent {
   checked: boolean;
@@ -34,7 +34,7 @@ export class ImCheckboxComponent {
   @Input() checked = false;
   @Output() checkedChanged = new EventEmitter<ImCheckBoxCheckEvent>();
 
-  control!: FormControl;
+  control!: UntypedFormControl;
 
   constructor(private readonly change: ChangeDetectorRef) {}
 

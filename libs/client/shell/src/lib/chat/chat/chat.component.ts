@@ -5,7 +5,7 @@ import {
   Component,
   ViewChild,
 } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import {
   ChatService,
@@ -49,7 +49,7 @@ interface State {
 export class ChatComponent extends StatefulComponent<State> implements AfterViewInit {
   @ViewChild(IonContent) readonly content?: IonContent;
 
-  readonly messageForm = new FormControl('', [(ac) => Validators.required(ac)]);
+  readonly messageForm = new UntypedFormControl('', [(ac) => Validators.required(ac)]);
 
   justOpenedChatRoom = true;
 

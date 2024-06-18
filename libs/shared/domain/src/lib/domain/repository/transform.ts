@@ -68,7 +68,7 @@ export function parseQuery<T, Q extends IQuery<T>>(
   if (!entities) return undefined;
 
   // is pagination
-  if ('items' in entities && 'meta' in entities) {
+  if (typeof entities === 'object' && entities !== null && 'items' in entities && 'meta' in entities) {
     const i = parseQuery(query, entities.items);
     // TODO any
     (entities as any).items = i;
@@ -80,16 +80,18 @@ export function parseQuery<T, Q extends IQuery<T>>(
   }
 
   const remove = (e: T) => {
-    const qKeys = Object.keys(query as object);
-    for (const k of Object.keys(e)) {
-      if (!qKeys.includes(k)) {
-        delete e[k as keyof T];
+    if(typeof e === 'object' && e !== null) {
+      const qKeys = Object.keys(query as object);
+      for (const k of Object.keys(e)) {
+        if (!qKeys.includes(k)) {
+          delete e[k as keyof T];
+        }
       }
-    }
 
-    for (const [k, q] of Object.entries(query as object)) {
-      if (typeof q === 'object') {
-        parseQuery(q, e[k as keyof T]);
+      for (const [k, q] of Object.entries(query as object)) {
+        if (typeof q === 'object') {
+          parseQuery(q, e[k as keyof T]);
+        }
       }
     }
 
@@ -97,7 +99,8 @@ export function parseQuery<T, Q extends IQuery<T>>(
   };
 
   if (Array.isArray(entities)) {
-    entities.map((e) => remove(e));
+    if(typeof entities === 'object' && entities !== null)
+      entities.map((e) => remove(e));
     return entities as unknown as IParser<T[], Q>;
   } else {
     entities = remove(entities);

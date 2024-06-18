@@ -1,16 +1,19 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/migrate/src",
   "projectType": "application",
   "prefix": "migrate",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/migrate",
         "main": "apps/migrate/src/main.ts",
         "tsConfig": "apps/migrate/tsconfig.app.json",
-        "assets": ["apps/migrate/src/assets"]
+        "assets": ["apps/migrate/src/assets"],
+        "target": "node",
+        "compiler": "tsc"
       },
       "configurations": {
         "production": {

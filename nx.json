@@ -22,17 +22,8 @@
       }
     }
   },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ]
-  },
   "cli": {
-    "analytics": "480193af-1f96-4b69-8237-5dc326a52c61",
-    "defaultCollection": "@nrwl/angular"
+    "analytics": "480193af-1f96-4b69-8237-5dc326a52c61"
   },
   "generators": {
     "@nrwl/angular": {
@@ -60,5 +51,11 @@
       "style": "scss"
     }
   },
-  "defaultProject": "involvemint"
+  "defaultProject": "involvemint",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { UserFacade } from '@involvemint/client/shared/data-access';
 import { RouteService } from '@involvemint/client/shared/routes';
 import { StatefulComponent } from '@involvemint/client/shared/util';
@@ -17,9 +17,9 @@ interface State {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginPageComponent extends StatefulComponent<State> implements OnInit {
-  readonly loginForm = new FormGroup({
-    email: new FormControl('', [(c) => Validators.required(c), Validators.pattern(ImConfig.regex.email)]),
-    password: new FormControl('', (c) => Validators.required(c)),
+  readonly loginForm = new UntypedFormGroup({
+    email: new UntypedFormControl('', [(c) => Validators.required(c), Validators.pattern(ImConfig.regex.email)]),
+    password: new UntypedFormControl('', (c) => Validators.required(c)),
   });
 
   constructor(private readonly route: RouteService, private readonly user: UserFacade) {
