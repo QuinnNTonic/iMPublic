@@ -12,7 +12,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/client/ba/shell"],
+      "outputs": ["{workspaceRoot}/coverage/libs/client/ba/shell"],
       "options": {
         "jestConfig": "libs/client/ba/shell/jest.config.ts",
         "passWithNoTests": true

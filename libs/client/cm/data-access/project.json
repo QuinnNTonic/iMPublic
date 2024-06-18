@@ -15,7 +15,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/client/cm/data-access"],
+      "outputs": ["{workspaceRoot}/coverage/libs/client/cm/data-access"],
       "options": {
         "jestConfig": "libs/client/cm/data-access/jest.config.ts",
         "passWithNoTests": true

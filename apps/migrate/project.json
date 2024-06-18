@@ -55,7 +55,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/migrate"],
+      "outputs": ["{workspaceRoot}/coverage/apps/migrate"],
       "options": {
         "jestConfig": "apps/migrate/jest.config.ts",
         "passWithNoTests": true
