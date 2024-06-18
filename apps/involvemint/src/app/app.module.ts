@@ -74,7 +74,7 @@ const ngrxDebugFactory = <T>() => {
       name: 'INVOLVEMINT',
       // In a production build you would want to disable the Store Devtools.
       logOnly: environment.environment === 'production',
-    }),
+    connectInZone: true}),
     EffectsModule.forRoot([]),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.environment === 'production',

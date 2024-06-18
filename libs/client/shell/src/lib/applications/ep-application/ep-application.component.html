@@ -89,7 +89,7 @@
             color="danger"
             name="close"
           ></ion-icon>
-          <im-error *ngIf="epForm!.controls.handle.errors?.notUnique">@handle already exists.</im-error>
+          <im-error *ngIf="epForm!.controls.handle.errors?.notUnique">&#64;handle already exists.</im-error>
           <im-error
             *ngIf="
               !epForm!.controls.handle.errors?.notUnique &&
@@ -97,7 +97,7 @@
               epForm!.controls.handle.touched
             "
           >
-            Please enter a valid @handle.
+            Please enter a valid &#64;handle.
           </im-error>
         </im-item>
 

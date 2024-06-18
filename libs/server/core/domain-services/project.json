@@ -14,8 +14,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/server/core/domain-services"],
       "options": {
-        "jestConfig": "libs/server/core/domain-services/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/server/core/domain-services/jest.config.ts"
       }
     }
   },

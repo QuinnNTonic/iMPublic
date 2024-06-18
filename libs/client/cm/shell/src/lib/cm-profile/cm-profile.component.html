@@ -28,7 +28,7 @@
           ></ion-icon>
           <div class="info">
             <b class="handle im-primary-text" (click)="settings()">
-              @{{ profile!.handle.id }}
+              &#64;{{ profile!.handle.id }}
               <ion-icon [style.color]="'var(--im-yellow)'" name="pencil"></ion-icon>
             </b>
             <span class="bio" *ngIf="profile!.bio">{{ profile!.bio }}</span>

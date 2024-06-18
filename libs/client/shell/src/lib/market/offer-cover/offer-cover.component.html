@@ -19,7 +19,7 @@
       <ion-title>{{ state.offer?.name || 'Offer' }}</ion-title>
       <ion-buttons slot="end" *ngIf="state.offer">
         <ion-button (click)="viewProfile(state.offer)">
-          @{{
+          &#64;{{
             state.offer?.changeMaker?.handle?.id ||
               state.offer?.exchangePartner?.handle?.id ||
               state.offer?.servePartner?.handle?.id

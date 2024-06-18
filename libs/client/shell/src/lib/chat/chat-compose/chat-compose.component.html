@@ -22,7 +22,7 @@
         <span>To:&nbsp;</span>
         <div>
           <ion-chip *ngFor="let member of state.members" (click)="removeMember(member)">
-            <ion-label>@{{ member.handleId }}</ion-label>
+            <ion-label>&#64;{{ member.handleId }}</ion-label>
             <ion-icon name="close-circle"></ion-icon>
           </ion-chip>
         </div>

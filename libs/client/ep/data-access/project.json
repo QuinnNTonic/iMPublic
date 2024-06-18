@@ -18,8 +18,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/client/ep/data-access"],
       "options": {
-        "jestConfig": "libs/client/ep/data-access/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/client/ep/data-access/jest.config.ts"
       }
     }
   },

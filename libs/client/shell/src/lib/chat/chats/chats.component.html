@@ -27,7 +27,7 @@
           <div body class="msg-body">
             <div class="cont" [ngClass]="{ unread: getUnreadForRoom(state.activeProfile!.handle.id, room) }">
               <div *ngIf="room.messages[room.messages.length - 1] as msg">
-                @{{ msg.member.handleId }}:
+                &#64;{{ msg.member.handleId }}:
                 <b>{{ msg.content }}</b>
               </div>
               <i *ngIf="!room.messages[room.messages.length - 1]?.content">No messages</i>

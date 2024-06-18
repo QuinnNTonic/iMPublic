@@ -66,7 +66,7 @@
               <p *ngIf="state.allTransactions.length === 0"><i>No recent transactions.</i></p>
               <div class="transaction" *ngFor="let t of state.allTransactions.slice(0, 10)">
                 <b class="to-from im-ellipsis">
-                  @{{
+                  &#64;{{
                     state.activeProfile?.handle?.id === t.meta.senderHandle
                       ? t.meta.receiverHandle
                       : t.meta.senderHandle
@@ -106,7 +106,7 @@
               <ion-icon name="globe" class="globe-icon" slot="start"></ion-icon>
               <div class="item-info">
                 <div class="handle im-ellipsis">
-                  @{{
+                  &#64;{{
                     state.activeProfile?.handle?.id === t.meta.senderHandle
                       ? t.meta.receiverHandle
                       : t.meta.senderHandle

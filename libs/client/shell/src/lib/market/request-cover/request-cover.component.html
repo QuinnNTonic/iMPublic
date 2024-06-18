@@ -19,7 +19,7 @@
       <ion-title>{{ state.request?.name || 'Request' }}</ion-title>
       <ion-buttons slot="end" *ngIf="state.request">
         <ion-button (click)="viewProfile(state.request)">
-          @{{
+          &#64;{{
             state.request?.changeMaker?.handle?.id ||
               state.request?.exchangePartner?.handle?.id ||
               state.request?.servePartner?.handle?.id

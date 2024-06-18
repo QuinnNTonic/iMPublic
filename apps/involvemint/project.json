@@ -130,7 +130,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "involvemint:build"
+        "buildTarget": "involvemint:build"
       }
     },
     "lint": {
@@ -143,8 +143,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/involvemint"],
       "options": {
-        "jestConfig": "apps/involvemint/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/involvemint/jest.config.ts"
       }
     }
   },

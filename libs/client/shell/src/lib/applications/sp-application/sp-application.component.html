@@ -39,7 +39,7 @@
             color="danger"
             name="close"
           ></ion-icon>
-          <im-error *ngIf="spForm!.controls.handle.errors?.notUnique">@handle already exists.</im-error>
+          <im-error *ngIf="spForm!.controls.handle.errors?.notUnique">&#64;handle already exists.</im-error>
           <im-error
             *ngIf="
               !spForm!.controls.handle.errors?.notUnique &&
@@ -47,7 +47,7 @@
               spForm!.controls.handle.touched
             "
           >
-            Please enter a valid @handle.
+            Please enter a valid &#64;handle.
           </im-error>
         </im-item>
 
