@@ -1,6 +1,5 @@
 {
   "projectType": "application",
-  "root": "apps/involvemint",
   "sourceRoot": "apps/involvemint/src",
   "prefix": "involvemint",
   "targets": {
@@ -142,7 +141,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/involvemint"],
       "options": {
-        "jestConfig": "apps/involvemint/jest.config.js",
+        "jestConfig": "apps/involvemint/jest.config.ts",
         "passWithNoTests": true
       }
     }

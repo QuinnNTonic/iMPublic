@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'client-cm-data-access',
+/* eslint-disable */
+export default {
+  displayName: 'client-shared-routes',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +10,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/client/cm/data-access',
+  coverageDirectory: '../../../../coverage/libs/client/shared/routes',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

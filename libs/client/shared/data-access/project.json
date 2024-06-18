@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/client/shared/data-access",
   "sourceRoot": "libs/client/shared/data-access/src",
   "prefix": "involvemint",
   "targets": {
@@ -17,7 +16,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/client/shared/data-access"],
       "options": {
-        "jestConfig": "libs/client/shared/data-access/jest.config.js",
+        "jestConfig": "libs/client/shared/data-access/jest.config.ts",
         "passWithNoTests": true
       }
     }

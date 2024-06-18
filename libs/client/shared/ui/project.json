@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/client/shared/ui",
   "sourceRoot": "libs/client/shared/ui/src",
   "prefix": "involvemint",
   "targets": {
@@ -14,7 +13,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/client/shared/ui"],
       "options": {
-        "jestConfig": "libs/client/shared/ui/jest.config.js",
+        "jestConfig": "libs/client/shared/ui/jest.config.ts",
         "passWithNoTests": true
       }
     }

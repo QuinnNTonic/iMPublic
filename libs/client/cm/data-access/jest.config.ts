@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'client-admin-shell',
+/* eslint-disable */
+export default {
+  displayName: 'client-cm-data-access',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +10,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/client/admin/shell',
+  coverageDirectory: '../../../../coverage/libs/client/cm/data-access',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

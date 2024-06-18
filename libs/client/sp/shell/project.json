@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/client/sp/shell",
   "sourceRoot": "libs/client/sp/shell/src",
   "prefix": "involvemint",
   "targets": {
@@ -14,7 +13,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/client/sp/shell"],
       "options": {
-        "jestConfig": "libs/client/sp/shell/jest.config.js",
+        "jestConfig": "libs/client/sp/shell/jest.config.ts",
         "passWithNoTests": true
       }
     }

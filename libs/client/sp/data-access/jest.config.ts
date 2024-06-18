@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'client-ba-shell',
+/* eslint-disable */
+export default {
+  displayName: 'client-sp-data-access',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +10,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/client/ba/shell',
+  coverageDirectory: '../../../../coverage/libs/client/sp/data-access',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

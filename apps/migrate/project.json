@@ -1,5 +1,4 @@
 {
-  "root": "apps/migrate",
   "sourceRoot": "apps/migrate/src",
   "projectType": "application",
   "prefix": "migrate",
@@ -55,7 +54,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/migrate"],
       "options": {
-        "jestConfig": "apps/migrate/jest.config.js",
+        "jestConfig": "apps/migrate/jest.config.ts",
         "passWithNoTests": true
       }
     }

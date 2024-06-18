@@ -1,5 +1,4 @@
 {
-  "root": "apps/involvemint-e2e",
   "sourceRoot": "apps/involvemint-e2e/src",
   "projectType": "application",
   "targets": {

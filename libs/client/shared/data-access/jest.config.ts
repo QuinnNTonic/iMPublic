@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'client-shared-util',
+/* eslint-disable */
+export default {
+  displayName: 'client-shared-data-access',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +10,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/client/shared/util',
+  coverageDirectory: '../../../../coverage/libs/client/shared/data-access',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

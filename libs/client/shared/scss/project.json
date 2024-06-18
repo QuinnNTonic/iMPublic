@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/client/shared/scss",
   "sourceRoot": "libs/client/shared/scss/src",
   "prefix": "involvemint",
   "targets": {
@@ -14,7 +13,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/client/shared/scss"],
       "options": {
-        "jestConfig": "libs/client/shared/scss/jest.config.js",
+        "jestConfig": "libs/client/shared/scss/jest.config.ts",
         "passWithNoTests": true
       }
     }

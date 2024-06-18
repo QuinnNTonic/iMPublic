@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/client/cm/api",
   "sourceRoot": "libs/client/cm/api/src",
   "prefix": "involvemint",
   "targets": {
@@ -14,7 +13,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/client/cm/api"],
       "options": {
-        "jestConfig": "libs/client/cm/api/jest.config.js",
+        "jestConfig": "libs/client/cm/api/jest.config.ts",
         "passWithNoTests": true
       }
     }

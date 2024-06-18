@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'server-core-domain-services',
+/* eslint-disable */
+export default {
+  displayName: 'server-core-application-services',
   preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': { tsconfig: '<rootDir>/tsconfig.spec.json' },
@@ -9,5 +10,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../../coverage/libs/server/core/domain-services',
+  coverageDirectory: '../../../../coverage/libs/server/core/application-services',
 };

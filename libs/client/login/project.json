@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/client/login",
   "sourceRoot": "libs/client/login/src",
   "prefix": "involvemint",
   "targets": {
@@ -14,7 +13,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/client/login"],
       "options": {
-        "jestConfig": "libs/client/login/jest.config.js",
+        "jestConfig": "libs/client/login/jest.config.ts",
         "passWithNoTests": true
       }
     }
