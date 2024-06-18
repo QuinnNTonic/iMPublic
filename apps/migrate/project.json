@@ -1,4 +1,5 @@
 {
+  "name": "migrate",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/migrate/src",
   "projectType": "application",

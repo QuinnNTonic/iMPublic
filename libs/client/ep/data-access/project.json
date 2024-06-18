@@ -1,4 +1,5 @@
 {
+  "name": "client-ep-data-access",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/client/ep/data-access/src",

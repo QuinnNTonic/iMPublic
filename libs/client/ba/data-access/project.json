@@ -1,4 +1,5 @@
 {
+  "name": "client-ba-data-access",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/client/ba/data-access/src",
