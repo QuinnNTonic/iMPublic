@@ -22,6 +22,69 @@
     }
   },
   "projects": {
+    "api": {
+      "tags": []
+    },
+    "api-e2e": {
+      "tags": ["type:app"]
+    },
+    "client-admin-data-access": {
+      "tags": []
+    },
+    "client-admin-shell": {
+      "tags": []
+    },
+    "client-ba-data-access": {
+      "tags": []
+    },
+    "client-ba-shell": {
+      "tags": []
+    },
+    "client-cm-api": {
+      "tags": []
+    },
+    "client-cm-data-access": {
+      "tags": []
+    },
+    "client-cm-shell": {
+      "tags": []
+    },
+    "client-ep-data-access": {
+      "tags": []
+    },
+    "client-ep-shell": {
+      "tags": []
+    },
+    "client-login": {
+      "tags": []
+    },
+    "client-shared-assets": {
+      "tags": []
+    },
+    "client-shared-data-access": {
+      "tags": []
+    },
+    "client-shared-routes": {
+      "tags": []
+    },
+    "client-shared-scss": {
+      "tags": []
+    },
+    "client-shared-ui": {
+      "tags": []
+    },
+    "client-shared-util": {
+      "tags": []
+    },
+    "client-shell": {
+      "tags": []
+    },
+    "client-sp-data-access": {
+      "tags": []
+    },
+    "client-sp-shell": {
+      "tags": []
+    },
     "involvemint": {
       "tags": []
     },
@@ -29,7 +92,10 @@
       "tags": [],
       "implicitDependencies": ["involvemint"]
     },
-    "api": {
+    "migrate": {
+      "tags": []
+    },
+    "server-api": {
       "tags": []
     },
     "server-core-application-services": {
@@ -43,72 +109,14 @@
     },
     "shared-util": {
       "tags": []
-    },
-    "client-shared-data-access": {
-      "tags": []
-    },
-    "api-e2e": {
-      "tags": ["type:app"]
-    },
-    "client-shared-util": {
-      "tags": []
-    },
-    "client-shared-ui": {
-      "tags": []
-    },
-    "client-shared-assets": {
-      "tags": []
-    },
-    "client-shared-scss": {
-      "tags": []
-    },
-    "client-shared-routes": {
-      "tags": []
-    },
-    "client-shell": {
-      "tags": []
-    },
-    "client-login": {
-      "tags": []
-    },
-    "client-cm-shell": {
-      "tags": []
-    },
-    "client-cm-data-access": {
-      "tags": []
-    },
-    "client-admin-data-access": {
-      "tags": []
-    },
-    "client-admin-shell": {
-      "tags": []
-    },
-    "client-sp-data-access": {
-      "tags": []
-    },
-    "client-sp-shell": {
-      "tags": []
-    },
-    "client-ep-shell": {
-      "tags": []
-    },
-    "client-ep-data-access": {
-      "tags": []
-    },
-    "client-cm-api": {
-      "tags": []
-    },
-    "client-ba-shell": {
-      "tags": []
-    },
-    "client-ba-data-access": {
-      "tags": []
-    },
-    "server-api": {
-      "tags": []
-    },
-    "migrate": {
-      "tags": []
     }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }

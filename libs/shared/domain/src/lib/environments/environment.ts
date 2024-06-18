@@ -10,7 +10,7 @@ export const environment: Env = {
   appUrl: `http://${host}:4202`,
   storageBucket: 'your storage bucket',
   adminPasswordHash:
-    'sZfCJx5X3sGSwkokIs9IVFxDfxWd2lEKsAhkOSDfEK8u2YS98y5rJAmXmtrJs7AQ29xkHMmz0bDfLkXCKS9/+A==',
+  'ErVaSjCLHM0RIIQE4QZuMmEkOU81/oqTCbTrQNNxXdddVKXp+onDi/C/+PiBg71B8Bdrc7dQbGUtjyK51DUEjQ==', //IM-LocalSuperAdmin1
   gcpApiKey: 'insert your key here',
   typeOrmConfig: {
     type: 'postgres',

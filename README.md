@@ -47,7 +47,7 @@ export const environment: Env = {
   appUrl: `http://${host}:4202`,
   storageBucket: 'your storage bucket',
   adminPasswordHash:
-    'sZfCJx5X3sGSwkokIs9IVFxDfxWd2lEKsAhkOSDfEK8u2YS98y5rJAmXmtrJs7AQ29xkHMmz0bDfLkXCKS9/+A==',
+    'ErVaSjCLHM0RIIQE4QZuMmEkOU81/oqTCbTrQNNxXdddVKXp+onDi/C/+PiBg71B8Bdrc7dQbGUtjyK51DUEjQ==', //IM-LocalSuperAdmin1
   gcpApiKey: 'insert your key here',
   typeOrmConfig: {
     type: 'postgres',
@@ -138,5 +138,11 @@ If you are prompted for the pasword (below screenshot) when opening PgAdmin at h
 Once running, the client can be accessed via `http://localhost:4202` and the api/server will be running on `http://127.0.0.1:3335`
 
 
+### Local Super Admin Privliges
+You can login to the local super admin using the following
+```
+Username: admin@admin.com
+Password: IM-LocalSuperAdmin1
+```
 
 For any issues, or to suggest improvements to this documentation, please contact Anish Sinha <<anish@developforgood.org>>

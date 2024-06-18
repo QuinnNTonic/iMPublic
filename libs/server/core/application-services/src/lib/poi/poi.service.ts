@@ -182,6 +182,7 @@ export class PoiService {
     if (user.changeMaker?.id !== poi.enrollment?.changeMaker?.id) {
       throw new HttpException('You do not own this Proof of Impact.', HttpStatus.UNAUTHORIZED);
     }
+    console.log("Before Status Calc");
     const status = calculatePoiStatus(poi);
     if (status !== PoiStatus.created) {
       throw new HttpException(
@@ -189,6 +190,7 @@ export class PoiService {
         HttpStatus.CONFLICT
       );
     }
+    console.log("Before Location Requirement");
     if (poi.enrollment.project.requireLocation && (!dto.latitude || !dto.longitude)) {
       throw new HttpException('Your location is required for this Proof of Impact.', HttpStatus.BAD_REQUEST);
     }
@@ -206,9 +208,10 @@ export class PoiService {
       const mandatoryClockOutDate = calculatePoiMandatoryClockOutDate(updatedPoi);
       const job = new CronJob(mandatoryClockOutDate, () => this.stopNoAuth({ poiId: dto.poiId }));
       this.schedulerRegistry.addCronJob(taskId, job);
+      console.log("Before Cron Job");
       job.start();
     });
-
+    console.log("After Cron Job");
     return this.poiRepo.findOneOrFail(dto.poiId, query);
   }
 
