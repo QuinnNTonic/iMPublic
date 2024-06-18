@@ -98,7 +98,7 @@ export class AuthService {
 
     try {
       sign = await this.getTokenOwner(token);
-    } catch (e) {
+    } catch (e: any) {
       throw new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
