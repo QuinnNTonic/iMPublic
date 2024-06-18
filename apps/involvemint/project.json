@@ -1,0 +1,151 @@
+{
+  "projectType": "application",
+  "root": "apps/involvemint",
+  "sourceRoot": "apps/involvemint/src",
+  "prefix": "involvemint",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/involvemint",
+        "index": "apps/involvemint/src/index.html",
+        "main": "apps/involvemint/src/main.ts",
+        "polyfills": "apps/involvemint/src/polyfills.ts",
+        "tsConfig": "apps/involvemint/tsconfig.app.json",
+        "assets": [
+          "apps/involvemint/src/favicon.ico",
+          {
+            "glob": "**/*",
+            "input": "./libs/client/shared/assets/src/lib/",
+            "output": "./assets"
+          },
+          {
+            "glob": "**/*",
+            "input": "./apps/involvemint/src/assets/",
+            "output": "./assets"
+          },
+          {
+            "glob": "**/*.svg",
+            "input": "node_modules/ionicons/dist/ionicons/svg",
+            "output": "./svg"
+          },
+          "apps/involvemint/src/manifest.webmanifest"
+        ],
+        "styles": ["apps/involvemint/src/styles.scss"],
+        "scripts": [],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/involvemint/ngsw-config.json",
+        "vendorChunk": true,
+        "extractLicenses": false,
+        "buildOptimizer": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "libs/shared/domain/src/lib/environments/environment.ts",
+              "with": "libs/shared/domain/src/lib/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        },
+        "test": {
+          "fileReplacements": [
+            {
+              "replace": "libs/shared/domain/src/lib/environments/environment.ts",
+              "with": "libs/shared/domain/src/lib/environments/environment.test.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        },
+        "local": {
+          "fileReplacements": [
+            {
+              "replace": "libs/shared/domain/src/lib/environments/environment.ts",
+              "with": "libs/shared/domain/src/lib/environments/environment.local.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@angular-executors/custom-webpack:dev-server",
+      "options": {
+        "browserTarget": "involvemint:build",
+        "proxyConfig": "apps/involvemint/proxy.conf.json",
+        "port": 4202
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "involvemint:build:production"
+        },
+        "test": {
+          "browserTarget": "involvemint:build:test"
+        },
+        "local": {
+          "browserTarget": "involvemint:build:local"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "involvemint:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/involvemint/src/**/*.ts", "apps/involvemint/src/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/involvemint"],
+      "options": {
+        "jestConfig": "apps/involvemint/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

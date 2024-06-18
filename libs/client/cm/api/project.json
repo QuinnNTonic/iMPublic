@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/client/cm/api",
+  "sourceRoot": "libs/client/cm/api/src",
+  "prefix": "involvemint",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/client/cm/api/src/**/*.ts", "libs/client/cm/api/src/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/cm/api"],
+      "options": {
+        "jestConfig": "libs/client/cm/api/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

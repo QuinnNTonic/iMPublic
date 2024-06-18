@@ -1,0 +1,64 @@
+{
+  "root": "apps/migrate",
+  "sourceRoot": "apps/migrate/src",
+  "projectType": "application",
+  "prefix": "migrate",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/migrate",
+        "main": "apps/migrate/src/main.ts",
+        "tsConfig": "apps/migrate/tsconfig.app.json",
+        "assets": ["apps/migrate/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/migrate/src/environments/environment.ts",
+              "with": "apps/migrate/src/environments/environment.prod.ts"
+            }
+          ]
+        },
+        "test": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/migrate/src/environments/environment.ts",
+              "with": "apps/migrate/src/environments/environment.test.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "migrate:build",
+        "port": 2324
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/migrate/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/migrate"],
+      "options": {
+        "jestConfig": "apps/migrate/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

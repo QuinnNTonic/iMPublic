@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/client/login",
+  "sourceRoot": "libs/client/login/src",
+  "prefix": "involvemint",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/client/login/src/**/*.ts", "libs/client/login/src/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/login"],
+      "options": {
+        "jestConfig": "libs/client/login/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

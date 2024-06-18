@@ -1,0 +1,76 @@
+{
+  "root": "apps/api",
+  "sourceRoot": "apps/api/src",
+  "projectType": "application",
+  "prefix": "api",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/api",
+        "main": "apps/api/src/main.ts",
+        "tsConfig": "apps/api/tsconfig.app.json"
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "libs/shared/domain/src/lib/environments/environment.ts",
+              "with": "libs/shared/domain/src/lib/environments/environment.prod.ts"
+            }
+          ]
+        },
+        "test": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "libs/shared/domain/src/lib/environments/environment.ts",
+              "with": "libs/shared/domain/src/lib/environments/environment.test.ts"
+            }
+          ]
+        },
+        "local": {
+          "fileReplacements": [
+            {
+              "replace": "libs/shared/domain/src/lib/environments/environment.ts",
+              "with": "libs/shared/domain/src/lib/environments/environment.local.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "api:build",
+        "port": 2324
+      },
+      "configurations": {
+        "local": {
+          "buildTarget": "api:build:local"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/api"],
+      "options": {
+        "jestConfig": "apps/api/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

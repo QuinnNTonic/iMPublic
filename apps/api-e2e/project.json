@@ -1,0 +1,22 @@
+{
+  "root": "apps/api-e2e",
+  "sourceRoot": "apps/api-e2e/src",
+  "projectType": "application",
+  "prefix": "api-e2e",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/api-e2e/**/*.ts"]
+      }
+    },
+    "e2e": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/api-e2e/jest.config.js"
+      }
+    }
+  },
+  "tags": ["type:app"]
+}

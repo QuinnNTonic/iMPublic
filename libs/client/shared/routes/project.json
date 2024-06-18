@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/client/shared/routes",
+  "sourceRoot": "libs/client/shared/routes/src",
+  "prefix": "involvemint",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/shared/routes/src/**/*.ts",
+          "libs/client/shared/routes/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/shared/routes"],
+      "options": {
+        "jestConfig": "libs/client/shared/routes/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/client/shared/assets",
+  "sourceRoot": "libs/client/shared/assets/src",
+  "prefix": "involvemint",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/shared/assets/src/**/*.ts",
+          "libs/client/shared/assets/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/shared/assets"],
+      "options": {
+        "jestConfig": "libs/client/shared/assets/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

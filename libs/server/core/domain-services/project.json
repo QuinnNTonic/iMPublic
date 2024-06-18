@@ -1,0 +1,22 @@
+{
+  "root": "libs/server/core/domain-services",
+  "sourceRoot": "libs/server/core/domain-services/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/server/core/domain-services/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/server/core/domain-services"],
+      "options": {
+        "jestConfig": "libs/server/core/domain-services/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/client/cm/data-access",
+  "sourceRoot": "libs/client/cm/data-access/src",
+  "prefix": "involvemint",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/cm/data-access/src/**/*.ts",
+          "libs/client/cm/data-access/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/cm/data-access"],
+      "options": {
+        "jestConfig": "libs/client/cm/data-access/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

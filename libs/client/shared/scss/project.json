@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/client/shared/scss",
+  "sourceRoot": "libs/client/shared/scss/src",
+  "prefix": "involvemint",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/client/shared/scss/src/**/*.ts", "libs/client/shared/scss/src/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/shared/scss"],
+      "options": {
+        "jestConfig": "libs/client/shared/scss/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

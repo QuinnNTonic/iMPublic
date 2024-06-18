@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/client/ba/shell",
+  "sourceRoot": "libs/client/ba/shell/src",
+  "prefix": "involvemint",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/client/ba/shell/src/**/*.ts", "libs/client/ba/shell/src/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/ba/shell"],
+      "options": {
+        "jestConfig": "libs/client/ba/shell/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
