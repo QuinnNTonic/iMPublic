@@ -3,7 +3,7 @@ import { UserRestClient } from '@involvemint/client/shared/data-access';
 import { StatusService } from '@involvemint/client/shared/util';
 import { UserPrivilegeQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch, pessimisticUpdate } from '@nrwl/angular';
+import { fetch, pessimisticUpdate } from '@nx/angular';
 import { from } from 'rxjs';
 import { delayWhen, filter, map, switchMap, tap } from 'rxjs/operators';
 import * as PrivilegesActions from './privileges.actions';

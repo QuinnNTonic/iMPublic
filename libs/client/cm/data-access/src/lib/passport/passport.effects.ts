@@ -5,7 +5,7 @@ import { RouteService } from '@involvemint/client/shared/routes';
 import { StatusService } from '@involvemint/client/shared/util';
 import { DeletePassportDocumentQuery, PassportDocumentQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch, pessimisticUpdate } from '@nrwl/angular';
+import { fetch, pessimisticUpdate } from '@nx/angular';
 import { EMPTY, from, of } from 'rxjs';
 import { delayWhen, filter, map, switchMap, take, tap } from 'rxjs/operators';
 import * as PassportActions from './passport.actions';

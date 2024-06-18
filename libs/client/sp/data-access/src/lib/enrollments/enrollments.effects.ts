@@ -3,7 +3,7 @@ import { EnrollmentRestClient } from '@involvemint/client/shared/data-access';
 import { StatusService } from '@involvemint/client/shared/util';
 import { calculateEnrollmentStatus, EnrollmentsSpQuery, EnrollmentStatus } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch, pessimisticUpdate } from '@nrwl/angular';
+import { fetch, pessimisticUpdate } from '@nx/angular';
 import { from, of } from 'rxjs';
 import { delayWhen, filter, map, switchMap, tap } from 'rxjs/operators';
 import * as EnrollmentsSpActions from './enrollments.actions';

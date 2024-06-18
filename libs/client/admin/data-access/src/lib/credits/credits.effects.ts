@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CreditRestClient } from '@involvemint/client/shared/data-access';
 import { StatusService } from '@involvemint/client/shared/util';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { pessimisticUpdate } from '@nrwl/angular';
+import { pessimisticUpdate } from '@nx/angular';
 import { from } from 'rxjs';
 import { delayWhen, map, tap } from 'rxjs/operators';
 import * as CreditsActions from './credits.actions';

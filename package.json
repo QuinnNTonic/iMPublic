@@ -92,7 +92,6 @@
     "@ngrx/entity": "15.3.0",
     "@ngrx/router-store": "15.3.0",
     "@ngrx/store": "15.3.0",
-    "@nrwl/angular": "15.9.7",
     "class-transformer": "0.4.0",
     "class-validator": "0.13.1",
     "cron": "1.8.2",
@@ -125,7 +124,8 @@
     "typeorm": "0.2.37",
     "typeorm-transactional-cls-hooked": "0.1.21",
     "uuid": "8.3.2",
-    "zone.js": "0.12.0"
+    "zone.js": "0.12.0",
+    "@nx/angular": "16.0.0"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^12.1.0",
@@ -143,13 +143,6 @@
     "@ngneat/spectator": "7.1.0",
     "@ngrx/schematics": "15.3.0",
     "@ngrx/store-devtools": "15.3.0",
-    "@nrwl/cli": "15.9.7",
-    "@nrwl/eslint-plugin-nx": "15.9.7",
-    "@nrwl/jest": "15.9.7",
-    "@nrwl/nest": "15.9.7",
-    "@nrwl/node": "15.9.7",
-    "@nrwl/nx-cloud": "19.0.0",
-    "@nrwl/workspace": "15.9.7",
     "@schematics/angular": "15.2.9",
     "@types/cron": "1.7.2",
     "@types/jest": "29.4.4",
@@ -177,11 +170,17 @@
     "jest-junit": "^16.0.0",
     "jest-preset-angular": "13.0.0",
     "jest-when": "3.3.1",
-    "nx": "15.9.7",
+    "nx": "16.0.0",
     "prettier": "2.8.8",
     "pretty-quick": "3.1.0",
-    "ts-jest": "29.0.5",
+    "ts-jest": "29.1.5",
     "ts-node": "10.9.1",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "nx-cloud": "19.0.0",
+    "@nx/workspace": "16.0.0",
+    "@nx/eslint-plugin": "16.0.0",
+    "@nx/jest": "16.0.0",
+    "@nx/node": "16.0.0",
+    "@nx/nest": "16.0.0"
   }
 }

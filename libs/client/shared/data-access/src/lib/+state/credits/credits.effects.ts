@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StatusService } from '@involvemint/client/shared/util';
 import { CreditQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch } from '@nrwl/angular';
+import { fetch } from '@nx/angular';
 import { map } from 'rxjs/operators';
 import * as CreditsActions from './credits.actions';
 import { CreditRestClient } from '../../rest-clients';

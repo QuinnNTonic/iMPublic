@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { InfoModalService, StatusService } from '@involvemint/client/shared/util';
 import { TransactionQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch, pessimisticUpdate } from '@nrwl/angular';
+import { fetch, pessimisticUpdate } from '@nx/angular';
 import { from, of } from 'rxjs';
 import { delayWhen, filter, map, switchMap, take, tap } from 'rxjs/operators';
 import * as CreditsActions from '../credits/credits.actions';

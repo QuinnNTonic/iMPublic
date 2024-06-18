@@ -3,7 +3,7 @@ import { ServeAdminRestClient, UserFacade } from '@involvemint/client/shared/dat
 import { StatusService } from '@involvemint/client/shared/util';
 import { SpAdminQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch } from '@nrwl/angular';
+import { fetch } from '@nx/angular';
 import { from } from 'rxjs';
 import { delayWhen, filter, map, switchMap, take, tap } from 'rxjs/operators';
 import * as SpAdminsActions from './sp-admins.actions';

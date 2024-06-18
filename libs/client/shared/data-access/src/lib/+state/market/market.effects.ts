@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StatusService } from '@involvemint/client/shared/util';
 import { ExchangePartnerMarketQuery, OfferMarketQuery, RequestMarketQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch } from '@nrwl/angular';
+import { fetch } from '@nx/angular';
 import { map } from 'rxjs/operators';
 import * as MarketActions from './market.actions';
 import { ExchangePartnerRestClient, OfferRestClient, RequestRestClient } from '../../rest-clients';

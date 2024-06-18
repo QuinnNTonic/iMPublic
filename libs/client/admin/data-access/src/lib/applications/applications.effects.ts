@@ -3,7 +3,7 @@ import { EpApplicationRestClient, SpApplicationRestClient } from '@involvemint/c
 import { StatusService } from '@involvemint/client/shared/util';
 import { EpApplicationQuery, SpApplicationQuery } from '@involvemint/shared/domain';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch, pessimisticUpdate } from '@nrwl/angular';
+import { fetch, pessimisticUpdate } from '@nx/angular';
 import { forkJoin, from } from 'rxjs';
 import { delayWhen, map, tap } from 'rxjs/operators';
 import * as ApplicationsActions from './applications.actions';

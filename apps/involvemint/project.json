@@ -140,7 +140,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/involvemint"],
       "options": {
         "jestConfig": "apps/involvemint/jest.config.ts",

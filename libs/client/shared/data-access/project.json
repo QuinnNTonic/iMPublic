@@ -15,7 +15,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/client/shared/data-access"],
       "options": {
         "jestConfig": "libs/client/shared/data-access/jest.config.ts",
