@@ -13,7 +13,7 @@ import {
 } from '@involvemint/shared/domain';
 import { paginate, Pagination } from 'nestjs-typeorm-paginate';
 import { Socket } from 'socket.io';
-import { DeepPartial, FindManyOptions, Repository } from 'typeorm';
+import { DeepPartial, FindManyOptions, FindOneOptions, In, Repository } from 'typeorm';
 import { createTypeormRelationsArray } from './relations.transform';
 import { GatewaysStorage } from './subscription-storage';
 
@@ -35,7 +35,10 @@ export abstract class IBaseRepository<
     ) => {
       const listener = () => {
         const relations = createTypeormRelationsArray(query);
-        return this.repo.findOneOrFail(id, { relations });
+        return this.repo.findOneOrFail({
+          where: { id: id },
+          relations,
+        } as FindOneOptions<Entity>);
       };
       return this.gatewaysStorage.provisionIdsSubscription({ socket, channel, listener, query });
     },
@@ -48,7 +51,10 @@ export abstract class IBaseRepository<
     ) => {
       const listener = () => {
         const relations = createTypeormRelationsArray(query);
-        return this.repo.findByIds(ids, { relations });
+        return this.repo.find({
+          where: { id: In(ids) },
+          relations,
+        } as FindManyOptions<Entity>);
       };
       return this.gatewaysStorage.provisionIdsSubscription({ socket, channel, listener, query });
     },
@@ -81,10 +87,15 @@ export abstract class IBaseRepository<
   async findOneOrFail<Q extends IQuery<Entity>>(id: IdType, query?: IExactQuery<Entity, Q>) {
     if (query) {
       const relations = createTypeormRelationsArray(query);
-      const dbRes = await this.repo.findOneOrFail(id, { relations });
+      const dbRes = await this.repo.findOneOrFail({
+        where: { id: id },
+        relations,
+      } as FindOneOptions<Entity>);
       return parseQuery(query, dbRes);
     } else {
-      return this.repo.findOneOrFail(id) as unknown as Promise<IProps<Entity>>;
+      return this.repo.findOneOrFail({
+        where: { id: id }
+      } as FindOneOptions<Entity>) as unknown as Promise<IProps<Entity>>;
     }
   }
 
@@ -96,10 +107,15 @@ export abstract class IBaseRepository<
   async findOne<Q extends IQuery<Entity>>(id: IdType, query?: IExactQuery<Entity, Q>) {
     if (query) {
       const relations = createTypeormRelationsArray(query);
-      const dbRes = await this.repo.findOne(id, { relations });
+      const dbRes = await this.repo.findOne({
+        where: { id: id },
+        relations,
+      } as FindOneOptions<Entity>);
       return parseQuery(query, dbRes);
     } else {
-      return this.repo.findOne(id) as unknown as Promise<IProps<Entity> | undefined>;
+      return this.repo.findOne({
+        where: { id: id }
+      } as FindOneOptions<Entity>) as unknown as Promise<IProps<Entity> | undefined>;
     }
   }
 
@@ -110,13 +126,20 @@ export abstract class IBaseRepository<
   ): Promise<IParser<Entity[], Q>>;
   async findMany<Q extends IQuery<Entity>>(ids: IdType[], query?: IExactQuery<Entity, Q>) {
     if (ids.length === 0) return [] as unknown as IParser<Entity[], Q>;
-    if (query) {
-      const relations = createTypeormRelationsArray(query);
-      const dbRes = await this.repo.findByIds(ids, { relations });
-      return parseQuery(query, dbRes);
-    } else {
-      return this.repo.findByIds(ids) as unknown as Promise<IProps<Entity>[]>;
-    }
+  
+  if (query) {
+    const relations = createTypeormRelationsArray(query);
+    const dbRes = await this.repo.find({
+      where: { id: In(ids) },
+      relations,
+    } as FindManyOptions<Entity>);
+    //const dbRes = await this.repo.findByIds(ids, { relations });
+    return parseQuery(query, dbRes);
+  } else {
+    return this.repo.find({
+      where: { id: In(ids) }
+    } as FindManyOptions<Entity>) as unknown as Promise<IProps<Entity>[]>;
+  }
   }
 
   async findAll(): Promise<IProps<Entity>[]>;

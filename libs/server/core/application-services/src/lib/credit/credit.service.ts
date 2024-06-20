@@ -41,9 +41,9 @@ export class CreditService {
 
     return this.creditRepo.query(query, {
       where: [
-        { changeMaker: dto.profileId },
-        { servePartner: dto.profileId },
-        { exchangePartner: dto.profileId },
+        { changeMaker: { id: dto.profileId } },
+        { servePartner: { id: dto.profileId } },
+        { exchangePartner: { id: dto.profileId } },
       ],
     });
   }
@@ -103,7 +103,7 @@ export class CreditService {
 
     /** Current user's credits. */
     const credits = await this.creditRepo.query(CreditQuery, {
-      where: [{ changeMaker: profileId }, { servePartner: profileId }, { exchangePartner: profileId }],
+      where: [{ changeMaker: { id: profileId } }, { servePartner: { id: profileId } }, { exchangePartner: { id: profileId } }],
     });
 
     // Sort credits by smallest to largest amount.

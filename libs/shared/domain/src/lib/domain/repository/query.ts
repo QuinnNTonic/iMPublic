@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-types */
-import { PAGINATE_KEY, PAGINATE_LIMIT, PAGINATE_PAGE } from './constants';
+import { PAGINATE_LIMIT, PAGINATE_PAGE, PAGINATE_KEY } from './constants';
 import { IAnyRelation } from './relations';
 
 /** Empty object `{}` response. */
 export type EmptyResponse = {};
 
 /**
- * Describes the fundamental type for a Query.
+ * Describes the fundamental type for an Orcha Query.
  */
 export type IQueryModel = { [k: string]: true | IQueryModel } | IPaginate;
 
 /**
- * Create a primitive Query from a model.
+ * Create a primitive Orcha Query from a model.
  */
 export type IQuery<T> = T extends Array<infer A> ? IQueryArray<A> & IPaginate : IQueryArray<T>;
 
@@ -45,9 +45,13 @@ export interface IPaginate {
 }
 
 /**
- * Utility type or an Query that does not allow for properties that are not specified in the model `T`.
+ * Utility type or an Orcha Query that does not allow for properties that are not specified in the model `T`.
  */
 export type IExactQuery<T, Q> = T extends Array<infer A> ? IExactQueryObject<A, Q> : IExactQueryObject<T, Q>;
 export type IExactQueryObject<T, Q> = Q & {
-  [K in keyof Q]: K extends typeof PAGINATE_KEY ? Q[K] : K extends keyof T ? IExactQuery<T[K], Q[K]> : never;
+  [K in keyof Q]: K extends typeof PAGINATE_KEY
+    ? Q[K]
+    : K extends keyof T
+    ? IExactQuery<T[K], Q[K]>
+    : never;
 };
