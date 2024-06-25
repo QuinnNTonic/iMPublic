@@ -1,12 +1,7 @@
 import {
-  IExactQuery,
-  IPaginate,
-  IQuery,
   IUpdateEntity,
   IUpsertEntity,
   IProps,
-  parseQuery,
-  IParser,
   PAGINATE_KEY,
   PAGINATE_PAGE,
   PAGINATE_LIMIT,
