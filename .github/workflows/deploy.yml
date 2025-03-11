@@ -1,0 +1,18 @@
+name: Deploy on Merge to Dev
+on:
+  push:
+    branches:
+      - covrize/cicd
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup environment
+        run: |
+          echo "Setting up the environment"
+      - name: Execute command after merge
+        run: |
+          echo "Code merged into dev. Running deployment..."
+          ./deploy.sh
