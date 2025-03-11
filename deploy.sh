@@ -5,5 +5,7 @@ sudo -E bash nodesource_setup.sh
 sudo apt-get install -y nodejs
 node -v
 
+BASEDIR=$(dirname $0)
+echo "Script location: ${BASEDIR}"
 npm ci
 npm run deploy:test
